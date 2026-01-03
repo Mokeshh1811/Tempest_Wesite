@@ -27,7 +27,7 @@ const UIUXInternship = () => {
     setSubmitMessage('');
 
     try {
-      const response = await fetch('https://tempest-email-backend-60062823191.development.catalystserverless.in/server/tempest_email_backend_function/api/send-email', {
+      const response = await fetch('/api/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
