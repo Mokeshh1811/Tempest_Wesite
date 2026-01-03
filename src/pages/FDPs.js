@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Section from '../components/Section';
 import PrimaryButton from '../components/PrimaryButton';
 import '../components/CardGrid.css';
 import '../components/Forms.css';
+import './PageTransition.css';
 
 const FDPs = () => {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    setVisible(true);
+  }, []);
   return (
-    <>
+  <div className={`page-transition ${visible ? 'enter' : ''}`}>
       <Section
         eyebrow="Faculty Development Programs (FDPs)"
         title="Faculty development programs."
@@ -140,7 +146,7 @@ const FDPs = () => {
           <PrimaryButton type="submit">Apply Now</PrimaryButton>
         </form>
       </Section>
-    </>
+    </div>
   );
 };
 

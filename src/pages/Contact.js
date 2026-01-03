@@ -13,7 +13,6 @@ import {
   FaCheckCircle
 } from 'react-icons/fa';
 import { HiSparkles } from 'react-icons/hi';
-import { PiX } from 'react-icons/pi';
 
 const Contact = () => {
   return (
@@ -72,7 +71,6 @@ const ContactForm = () => {
           <img
             src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
             alt="Team collaboration"
-            width={10}
             className="form-image"
           />
           <div className="image-overlay">

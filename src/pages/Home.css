@@ -433,3 +433,12 @@
     gap: 2rem;
   }
 }
+/* ============================= */
+/* HIDE HERO ARROWS ON MOBILE */
+/* ============================= */
+
+@media (max-width: 768px) {
+  .hero-slideshow .nav-arrow {
+    display: none;
+  }
+}

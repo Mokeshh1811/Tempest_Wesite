@@ -1,24 +1,33 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Section from '../components/Section';
 import PrimaryButton from '../components/PrimaryButton';
 import '../components/CardGrid.css';
 import '../components/Forms.css';
+import './PageTransition.css';
 
 const CloudEngineering = () => {
+  const [visible, setVisible] = useState(false);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     organization: '',
-    message: ''
+    message: '',
   });
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
 
+  useEffect(() => {
+    // Trigger animation on mount
+    setVisible(true);
+  }, []);
+
   const handleChange = (e) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }));
   };
 
@@ -28,42 +37,40 @@ const CloudEngineering = () => {
     setSubmitMessage('');
 
     try {
-      const response = await fetch('http://localhost:3001/api/send-email', {
+      const response = await fetch('http://localhost:3002/api/send-email', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...formData,
           service: 'Cloud & Platform Engineering',
         }),
       });
 
-      if (response.ok) {
-        setSubmitMessage('Thank you! We\'ve sent you a confirmation email.');
-        setFormData({
-          name: '',
-          email: '',
-          organization: '',
-          message: '',
-        });
-      } else {
-        throw new Error('Failed to send email');
-      }
+      if (!response.ok) throw new Error();
+
+      setSubmitMessage("Thank you! We've sent you a confirmation email.");
+      setFormData({
+        name: '',
+        email: '',
+        organization: '',
+        message: '',
+      });
     } catch (error) {
-      console.error('Email send failed:', error);
-      setSubmitMessage('Sorry, there was an error sending your message. Please try again.');
+      setSubmitMessage(
+        'Sorry, there was an error sending your message. Please try again.'
+      );
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <>
+    <div className={`page-transition ${visible ? 'enter' : ''}`}>
+      {/* SERVICES SECTION */}
       <Section
         eyebrow="Cloud & Platform Engineering"
         title="Services that move ideas into production."
-        subtitle="Tempest offers structured services for institutions and businesses—covering UX/UI design, full‑stack engineering, and AI-first solutions."
+        subtitle="Tempest offers structured services for institutions and businesses—covering UX/UI design, full-stack engineering, and AI-first solutions."
       >
         <div className="card-grid">
           <div className="card">
@@ -73,27 +80,29 @@ const CloudEngineering = () => {
               className="card-image"
             />
             <span className="card-tag">Experience</span>
-            <h3 className="card-title">Product &amp; UX Design</h3>
+            <h3 className="card-title">Product & UX Design</h3>
             <p className="card-body">
-              Research-backed UX, interface design systems, design audits and clickable prototypes tailored for web platforms, portals and internal tools.
+              Research-backed UX, interface design systems, design audits and
+              clickable prototypes tailored for modern platforms.
             </p>
-            <Link to="/services/product-ux-design" className="card-read-more" title="Read more">
+            <Link to="/services/product-ux-design" className="card-read-more">
               →
             </Link>
           </div>
 
           <div className="card">
             <img
-src="https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+              src="https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?auto=format&fit=crop&w=2070&q=80"
               alt="Application Development"
               className="card-image"
             />
             <span className="card-tag">Engineering</span>
             <h3 className="card-title">Application Development</h3>
             <p className="card-body">
-              End‑to‑end development of performant web applications, dashboards and integrations using modern stacks, cloud-native architectures and CI/CD practices.
+              End-to-end development of performant, scalable web applications
+              using cloud-native architectures.
             </p>
-            <Link to="/services/application-development" className="card-read-more" title="Read more">
+            <Link to="/services/application-development" className="card-read-more">
               →
             </Link>
           </div>
@@ -105,17 +114,19 @@ src="https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?ixlib=rb-4.0.3
               className="card-image"
             />
             <span className="card-tag">Enablement</span>
-            <h3 className="card-title">Consulting &amp; Mentoring</h3>
+            <h3 className="card-title">Consulting & Mentoring</h3>
             <p className="card-body">
-              Technology roadmapping, architecture reviews and on‑the‑job mentoring for internal teams building their own products or academic initiatives.
+              Technology roadmapping, architecture reviews and on-the-job
+              mentoring for internal teams.
             </p>
-            <Link to="/services/consulting-mentoring" className="card-read-more" title="Read more">
+            <Link to="/services/consulting-mentoring" className="card-read-more">
               →
             </Link>
           </div>
         </div>
       </Section>
 
+      {/* ENQUIRY SECTION */}
       <Section
         eyebrow="Service enquiry"
         title="Get in touch for Cloud & Platform Engineering services."
@@ -123,51 +134,52 @@ src="https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?ixlib=rb-4.0.3
       >
         <form className="contact-form" onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="name">Name *</label>
+            <label>Name *</label>
             <input
               type="text"
-              id="name"
               name="name"
               value={formData.name}
               onChange={handleChange}
               required
             />
           </div>
+
           <div className="form-group">
-            <label htmlFor="email">Email *</label>
+            <label>Email *</label>
             <input
               type="email"
-              id="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
               required
             />
           </div>
+
           <div className="form-group">
-            <label htmlFor="organization">Organization</label>
+            <label>Organization</label>
             <input
               type="text"
-              id="organization"
               name="organization"
               value={formData.organization}
               onChange={handleChange}
             />
           </div>
+
           <div className="form-group">
-            <label htmlFor="message">Message *</label>
+            <label>Message *</label>
             <textarea
-              id="message"
-              name="message"
               rows="5"
+              name="message"
               value={formData.message}
               onChange={handleChange}
               required
-            ></textarea>
+            />
           </div>
+
           <PrimaryButton type="submit" disabled={isSubmitting}>
             {isSubmitting ? 'Sending...' : 'Send Enquiry'}
           </PrimaryButton>
+
           {submitMessage && (
             <p
               className={`submit-message ${
@@ -179,7 +191,7 @@ src="https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?ixlib=rb-4.0.3
           )}
         </form>
       </Section>
-    </>
+    </div>
   );
 };
 

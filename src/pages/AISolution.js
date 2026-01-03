@@ -28,7 +28,7 @@ const AISolution = () => {
     setSubmitMessage('');
 
     try {
-      const response = await fetch('http://localhost:3001/api/send-email', {
+      const response = await fetch('http://localhost:3002/api/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
