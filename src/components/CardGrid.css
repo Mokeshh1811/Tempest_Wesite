@@ -1,0 +1,226 @@
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.6rem;
+}
+
+.card {
+  background: radial-gradient(circle at top left, rgba(0, 174, 199, 0.12), rgba(5, 8, 12, 0.96));
+  border-radius: 16px;
+  padding: 1.3rem 1.25rem 1.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.75);
+}
+
+.card-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.card-tag {
+  display: inline-block;
+  margin-bottom: 0.6rem;
+  padding: 0.16rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 174, 199, 0.65);
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.card-link {
+  text-decoration: none;
+  display: block;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-link:hover {
+  transform: translateY(-4px);
+}
+
+.card-link:hover .card {
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85);
+  border-color: rgba(0, 174, 199, 0.2);
+}
+
+.card-read-more {
+  position: absolute;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  color: var(--primary);
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  opacity: 0.7;
+}
+
+.card-read-more:hover {
+  opacity: 1;
+  transform: translateX(3px);
+  color: var(--primary-dark);
+}
+
+.card {
+  position: relative;
+}
+
+.card-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.service-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.service-overview {
+  max-width: 100%;
+}
+
+.service-image {
+  display: flex;
+  justify-content: center;
+}
+
+.service-hero-image {
+  width: 100%;
+  max-width: 400px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  .service-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .service-hero-image {
+    max-width: 100%;
+    height: 250px;
+  }
+}
+/* ============================= */
+/* CARD TOP IMAGE */
+/* ============================= */
+
+.card-top-image {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 0.9rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
+  transition: transform 0.4s ease;
+}
+
+/* Subtle hover zoom */
+.card:hover .card-top-image {
+  transform: scale(1.05);
+}
+
+/* Optional image overlay effect */
+.card-top-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+.card {
+  overflow: hidden;
+}
+
+.card-top-image {
+  position: relative;
+}
+
+.card-top-image {
+  mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+}
+/* ============================= */
+/* SOCIAL + EMAIL CARDS */
+/* ============================= */
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.social-links a {
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: #00aec7;
+  border: 1px solid rgba(0,174,199,0.4);
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  transition: all 0.25s ease;
+}
+
+.social-links a:hover {
+  background: rgba(0,174,199,0.15);
+  border-color: rgba(0,174,199,0.8);
+  transform: translateY(-2px);
+}
+
+.email-link {
+  display: inline-block;
+  margin-top: 0.8rem;
+  font-size: 0.95rem;
+  color: #ffd700;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+.email-link:hover {
+  text-decoration: underline;
+  transform: translateX(2px);
+}
+.social-icons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.9rem;
+}
+
+.social-icons a {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,174,199,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,174,199,0.08);
+  transition: all 0.3s ease;
+}
+
+.social-icons a svg {
+  width: 20px;
+  height: 20px;
+  fill: #00aec7;
+  transition: fill 0.3s ease;
+}
+
+.social-icons a:hover {
+  transform: translateY(-4px) scale(1.05);
+  border-color: rgba(0,174,199,0.9);
+  background: rgba(0,174,199,0.18);
+  box-shadow: 0 10px 30px rgba(0,174,199,0.35);
+}
+
+.social-icons a:hover svg {
+  fill: #ffd700;
+}

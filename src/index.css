@@ -1,0 +1,40 @@
+:root {
+  --primary: #00AEC7;
+  --primary-dark: #0E4D8D;
+  --gray: #575757;
+  --white: #FFFFFF;
+  --bg-dark: #020608;
+  --font-main: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-main);
+  background: var(--bg-dark);
+  color: var(--white);
+  min-height: 100vh;
+}
+
+html {
+  height: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+}

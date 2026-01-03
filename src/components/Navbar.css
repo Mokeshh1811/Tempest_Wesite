@@ -1,0 +1,320 @@
+/* ============================= */
+/* BASE NAVBAR */
+/* ============================= */
+
+.nav-header {
+  background: #000000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-inner {
+  width: 100%;
+  margin: 0;
+  padding: 0.9rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.nav-brand {
+  margin-left: 0;
+}
+
+.nav-logo {
+  height: 64px;
+}
+
+/* ============================= */
+/* CENTER EYEBROW (DESKTOP ONLY) */
+/* ============================= */
+
+.nav-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.nav-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.75rem;
+  color: var(--primary);
+  font-weight: 500;
+}
+
+/* ============================= */
+/* DESKTOP NAV LINKS */
+/* ============================= */
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-left: auto;
+  align-items: center;
+}
+
+.nav-links a,
+.dropdown-toggle {
+  color: rgba(255, 255, 255, 0.75);
+  position: relative;
+  padding-bottom: 0.25rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Top-level active link ONLY */
+.nav-links > a.active {
+  color: var(--primary);
+}
+
+/* Underline animation (top-level only) */
+.nav-links > a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+  transition: width 0.25s ease;
+}
+
+.nav-links > a:hover::after,
+.nav-links > a.active::after {
+  width: 100%;
+}
+
+/* ============================= */
+/* DROPDOWNS (DESKTOP) */
+/* ============================= */
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.dropdown-toggle::after {
+  content: '▾';
+  font-size: 0.6rem;
+  transition: transform 0.2s ease;
+}
+
+.dropdown.open .dropdown-toggle::after {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 120%;
+  left: 0;
+  background: #000;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  min-width: 220px;
+  z-index: 1010;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.dropdown.open .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* 🔑 DROPDOWN LINKS — NO ACTIVE COLOR */
+.dropdown-menu a {
+  display: block;
+  padding: 0.75rem 1rem;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.75);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  text-decoration: none;
+}
+
+/* Disable NavLink active styling inside dropdown */
+.dropdown-menu a.active {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* Hover ONLY */
+.dropdown-menu a:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--primary);
+}
+
+/* ============================= */
+/* SUBMENU */
+/* ============================= */
+
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu > span {
+  display: block;
+  padding: 0.75rem 1rem;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+}
+
+.dropdown-submenu .submenu {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  background: #000;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  min-width: 220px;
+  z-index: 1020;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-10px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.dropdown-submenu:hover .submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+.submenu a {
+  display: block;
+  padding: 0.75rem 1rem;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.75);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  text-decoration: none;
+}
+
+/* Disable active here too */
+.submenu a.active {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.submenu a:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--primary);
+}
+
+.submenu a:last-child {
+  border-bottom: none;
+}
+
+/* ============================= */
+/* HAMBURGER (MOBILE) */
+/* ============================= */
+
+.hamburger {
+  font-size: 1.6rem;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* ============================= */
+/* MOBILE SIDEBAR */
+/* ============================= */
+
+.mobile-sidebar {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 280px;
+  height: 100vh;
+  background: linear-gradient(180deg, #05080c, #0f172a);
+  padding: 1.5rem;
+  transition: left 0.35s ease;
+  z-index: 1100;
+}
+
+.mobile-sidebar.open {
+  left: 0;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.mobile-links a,
+.mobile-group button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 0.95rem;
+  padding: 0.6rem 0;
+}
+
+.mobile-submenu {
+  padding-left: 1rem;
+}
+
+.submenu-title {
+  font-size: 0.7rem;
+  opacity: 0.6;
+  margin-top: 0.4rem;
+}
+
+/* ============================= */
+/* OVERLAY */
+/* ============================= */
+
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1050;
+}
+
+/* ============================= */
+/* RESPONSIVE RULES */
+/* ============================= */
+
+.desktop-only {
+  display: flex;
+}
+
+.mobile-only {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+
+  .nav-center {
+    display: none;
+  }
+
+  .nav-logo {
+    height: 54px;
+  }
+}

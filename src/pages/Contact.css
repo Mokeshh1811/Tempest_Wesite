@@ -1,0 +1,717 @@
+/* ============================= */
+/* CSS CUSTOM PROPERTIES */
+/* ============================= */
+
+.contact-grid {
+  --card-bg: linear-gradient(
+    145deg,
+    rgba(15, 23, 42, 0.9),
+    rgba(2, 6, 23, 0.98)
+  );
+  --card-border: rgba(255, 255, 255, 0.08);
+  --card-border-hover: rgba(255, 255, 255, 0.15);
+  --input-bg: rgba(255, 255, 255, 0.03);
+  --input-bg-focus: rgba(255, 255, 255, 0.07);
+  --text-muted: rgba(255, 255, 255, 0.6);
+  --text-light: rgba(255, 255, 255, 0.85);
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  --glow-primary: rgba(99, 102, 241, 0.4);
+}
+
+/* ============================= */
+/* BACKGROUND DECORATIONS */
+/* ============================= */
+
+.contact-bg-decoration {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.4;
+  animation: float 8s ease-in-out infinite;
+}
+
+.glow-orb-1 {
+  width: 400px;
+  height: 400px;
+  background: var(--primary);
+  top: -100px;
+  left: -100px;
+}
+
+.glow-orb-2 {
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  bottom: -50px;
+  right: -50px;
+  animation-delay: -4s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(30px, -30px) scale(1.1); }
+}
+
+/* ============================= */
+/* CONTACT GRID */
+/* ============================= */
+
+.contact-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 2.5rem;
+  align-items: stretch;
+}
+
+/* ============================= */
+/* FORM CARD - ENHANCED */
+/* ============================= */
+
+.generic-form {
+  width: 100%;
+  background: var(--card-bg);
+  padding: 2.5rem;
+  border-radius: 24px;
+  border: 1px solid var(--card-border);
+  box-shadow: 
+    0 25px 50px -12px var(--shadow-color),
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+  backdrop-filter: blur(20px);
+  animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.generic-form:hover {
+  border-color: var(--card-border-hover);
+  box-shadow: 
+    0 25px 60px -12px var(--shadow-color),
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+    0 0 80px -20px var(--glow-primary);
+}
+
+/* Form Header */
+.form-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.form-header-icon {
+  color: var(--primary);
+  font-size: 1.25rem;
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.1); }
+}
+
+.form-header span {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-light);
+}
+
+/* Form Rows */
+.generic-form .form-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.generic-form .form-row.single {
+  grid-template-columns: 1fr;
+}
+
+/* Labels */
+.generic-form label {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.generic-form .label-text {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color 0.3s ease;
+}
+
+.generic-form label.active .label-text {
+  color: var(--primary);
+}
+
+/* Inputs */
+.generic-form input,
+.generic-form textarea {
+  position: relative;
+  background: var(--input-bg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1rem 1.15rem;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.generic-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.generic-form input::placeholder,
+.generic-form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.generic-form input:focus,
+.generic-form textarea:focus {
+  outline: none;
+  background: var(--input-bg-focus);
+  border-color: var(--primary);
+  box-shadow: 
+    0 0 0 3px rgba(99, 102, 241, 0.15),
+    0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Input Highlight Line */
+.input-highlight {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), #8b5cf6);
+  border-radius: 2px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(-50%);
+}
+
+.generic-form label.active .input-highlight {
+  width: calc(100% - 2rem);
+}
+
+/* Button Enhancements */
+.generic-form .btn-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.generic-form .btn-icon {
+  font-size: 0.9rem;
+  transition: transform 0.3s ease;
+}
+
+.generic-form button:hover .btn-icon {
+  transform: translateX(4px);
+}
+
+.generic-form .btn-loading {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Success State */
+.generic-form.success-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 450px;
+}
+
+.success-content {
+  text-align: center;
+  animation: scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.success-icon-wrapper {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+  background: linear-gradient(135deg, var(--primary), #8b5cf6);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4); }
+  70% { box-shadow: 0 0 0 20px rgba(99, 102, 241, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
+}
+
+.success-icon {
+  font-size: 2.5rem;
+  color: white;
+}
+
+.success-content h3 {
+  font-size: 1.5rem;
+  color: white;
+  margin-bottom: 0.75rem;
+}
+
+.success-content p {
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.reset-btn {
+  background: transparent;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.reset-btn:hover {
+  background: var(--primary);
+  color: white;
+}
+
+/* ============================= */
+/* CONTACT INFO CARD - ENHANCED */
+/* ============================= */
+
+.contact-info {
+  width: 100%;
+  background: var(--card-bg);
+  border-radius: 24px;
+  padding: 0;
+  border: 1px solid var(--card-border);
+  box-shadow: 
+    0 25px 50px -12px var(--shadow-color),
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.1s;
+  opacity: 0;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-info:hover {
+  border-color: var(--card-border-hover);
+}
+
+/* Image Section */
+.contact-image-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contact-image-wrapper:hover .contact-image {
+  transform: scale(1.05);
+}
+
+.image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(2, 6, 23, 0.8) 100%
+  );
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 1.25rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.contact-image-wrapper:hover .image-overlay {
+  opacity: 1;
+}
+
+.image-overlay span {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: white;
+  background: var(--primary);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+}
+
+/* Content Section */
+.contact-info-content {
+  padding: 1.75rem;
+  flex: 1;
+}
+
+.contact-info h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 1.25rem;
+}
+
+.accent-bar {
+  width: 4px;
+  height: 20px;
+  background: linear-gradient(to bottom, var(--primary), #8b5cf6);
+  border-radius: 4px;
+}
+
+/* Contact Items */
+.contact-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid transparent;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: fadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
+.contact-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+  transform: translateX(6px);
+}
+
+.contact-icon-wrapper {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2));
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.contact-item:hover .contact-icon-wrapper {
+  background: linear-gradient(135deg, var(--primary), #8b5cf6);
+  transform: scale(1.05);
+}
+
+.contact-icon {
+  color: var(--primary);
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.contact-item:hover .contact-icon {
+  color: white;
+}
+
+.contact-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.contact-text p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  line-height: 1.45;
+}
+
+.contact-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  opacity: 0;
+  transform: translateY(-5px);
+  transition: all 0.3s ease;
+}
+
+.contact-item:hover .contact-label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.arrow-indicator {
+  font-size: 1rem;
+  color: var(--text-muted);
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s ease;
+}
+
+.contact-item:hover .arrow-indicator {
+  opacity: 1;
+  transform: translateX(0);
+  color: var(--primary);
+}
+
+/* Response Badge */
+.response-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1rem;
+  background: rgba(34, 197, 94, 0.1);
+  border-top: 1px solid rgba(34, 197, 94, 0.2);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #22c55e;
+  letter-spacing: 0.03em;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background: #22c55e;
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+/* ============================= */
+/* ANIMATIONS */
+/* ============================= */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================= */
+/* RESPONSIVE DESIGN */
+/* ============================= */
+
+@media (max-width: 1024px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .contact-info {
+    animation-delay: 0.15s;
+  }
+}
+
+@media (max-width: 768px) {
+  .generic-form {
+    padding: 1.75rem;
+  }
+  
+  .generic-form .form-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .form-header {
+    margin-bottom: 1.5rem;
+  }
+  
+  .glow-orb {
+    opacity: 0.2;
+  }
+}
+
+@media (max-width: 480px) {
+  .generic-form {
+    padding: 1.5rem;
+    border-radius: 18px;
+  }
+  
+  .contact-info-content {
+    padding: 1.25rem;
+  }
+  
+  .contact-item {
+    padding: 0.75rem;
+  }
+  
+  .contact-icon-wrapper {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* ============================= */
+/* REDUCED MOTION */
+/* ============================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+/* ============================= */
+/* FORM CARD WRAPPER */
+/* ============================= */
+
+.form-card-wrapper {
+  background: var(--card-bg);
+  border-radius: 24px;
+  border: 1px solid var(--card-border);
+  box-shadow: 
+    0 25px 50px -12px var(--shadow-color),
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+  overflow: hidden;
+  animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-card-wrapper:hover {
+  border-color: var(--card-border-hover);
+  box-shadow: 
+    0 25px 60px -12px var(--shadow-color),
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+    0 0 80px -20px var(--glow-primary);
+}
+
+/* ============================= */
+/* FORM IMAGE HEADER */
+/* ============================= */
+
+.form-image-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.form-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-image-wrapper:hover .form-image {
+  transform: scale(1.05);
+}
+
+.form-image-wrapper .image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(2, 6, 23, 0.8) 100%
+  );
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 1.25rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.form-image-wrapper:hover .image-overlay {
+  opacity: 1;
+}
+
+.form-image-wrapper .image-overlay span {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: white;
+  background: var(--primary);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+}
+
+/* ============================= */
+/* FORM INSIDE WRAPPER - RESET */
+/* ============================= */
+
+.form-card-wrapper .generic-form {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  animation: none;
+}
+
+.form-card-wrapper .generic-form:hover {
+  box-shadow: none;
+}
+
+/* Success state inside wrapper */
+.form-card-wrapper .generic-form.success-state {
+  min-height: 350px;
+}
