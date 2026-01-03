@@ -293,25 +293,30 @@ const HomeContactForm = () => {
     setIsSubmitting(true);
     setSubmitMessage('');
 
-    try {
-      const response = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
+try {
+  const response = await fetch('/api/send-email', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(formData),
+  });
 
-      if (response.ok) {
-        setSubmitMessage("Thank you! We've sent you a confirmation email.");
-        setFormData({ name: '', email: '', service: '', message: '' });
-      } else {
-        throw new Error('Failed to send email');
-      }
-    } catch (error) {
-      console.error('Email send failed:', error);
-      setSubmitMessage('Sorry, there was an error sending your message. Please try again.');
-    } finally {
-      setIsSubmitting(false);
-    }
+  const result = await response.json(); // 👈 IMPORTANT
+
+  if (response.ok) {
+    setSubmitMessage("Thank you! We've sent you a confirmation email.");
+    setFormData({ name: '', email: '', service: '', message: '' });
+  } else {
+    throw new Error(result.error || 'Failed to send email');
+  }
+
+} catch (error) {
+  console.error('Email send failed:', error);
+  setSubmitMessage(error.message || 'Sorry, there was an error sending your message. Please try again.');
+
+} finally {
+  setIsSubmitting(false);
+}
+
   };
 
   return (

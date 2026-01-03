@@ -1,14 +1,30 @@
 const nodemailer = require("nodemailer");
 
 module.exports = async (req, res) => {
-  // ❌ No CORS needed (server-to-server)
+  const corsHeaders = {
+    "Access-Control-Allow-Origin": "https://tempest-company.vercel.app", // 🔐 change if needed
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type",
+    "Access-Control-Max-Age": "86400"
+  };
+
+  // ✅ HANDLE PREFLIGHT FOR ALL PATHS
+  if (req.method === "OPTIONS") {
+    res.writeHead(204, corsHeaders);
+    return res.end();
+  }
+
+  // ❌ BLOCK EVERYTHING EXCEPT POST
   if (req.method !== "POST") {
-    res.writeHead(405, { "Content-Type": "application/json" });
+    res.writeHead(405, {
+      ...corsHeaders,
+      "Content-Type": "application/json"
+    });
     return res.end(JSON.stringify({ error: "Only POST allowed" }));
   }
 
   try {
-    // 🔹 Read request body (Catalyst Advanced I/O)
+    // ✅ STREAM BODY (REQUIRED IN CATALYST)
     const body = await new Promise((resolve, reject) => {
       let data = "";
       req.on("data", chunk => (data += chunk));
@@ -19,11 +35,14 @@ module.exports = async (req, res) => {
     const { name, email, service, message, organization } = body;
 
     if (!name || !email || !service || !message) {
-      res.writeHead(400, { "Content-Type": "application/json" });
+      res.writeHead(400, {
+        ...corsHeaders,
+        "Content-Type": "application/json"
+      });
       return res.end(JSON.stringify({ error: "Missing required fields" }));
     }
 
-    // ⚠️ DEV ONLY — move to env vars in production
+    // ⚠️ DEV ONLY — replace with env vars later
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -44,7 +63,10 @@ module.exports = async (req, res) => {
       `
     });
 
-    res.writeHead(200, { "Content-Type": "application/json" });
+    res.writeHead(200, {
+      ...corsHeaders,
+      "Content-Type": "application/json"
+    });
     return res.end(JSON.stringify({
       success: true,
       message: "Email sent successfully"
@@ -52,7 +74,10 @@ module.exports = async (req, res) => {
 
   } catch (err) {
     console.error("Email error:", err);
-    res.writeHead(500, { "Content-Type": "application/json" });
+    res.writeHead(500, {
+      ...corsHeaders,
+      "Content-Type": "application/json"
+    });
     return res.end(JSON.stringify({
       success: false,
       error: err.message
