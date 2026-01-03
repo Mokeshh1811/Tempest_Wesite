@@ -26,7 +26,7 @@ const Layout = ({ children }) => {
           </div>
           <div className="connect-section">
             <h4 className="connect-text">Let&apos;s connect</h4>
-            <p>Email: hello@tempeststudio.com<br />Phone: +91-98765-43210</p>
+            <p>Email: hello@tempeststudio.com<br />Phone: +91-9XXXXXXXXX</p>
           </div>
         </div>
         <div className="footer-bottom">
