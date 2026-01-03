@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Section from '../components/Section';
 import PrimaryButton from '../components/PrimaryButton';
@@ -6,6 +6,56 @@ import '../components/CardGrid.css';
 import '../components/Forms.css';
 
 const Services = () => {
+    const [formData, setFormData] = useState({
+      name: '',
+      email: '',
+      organization: '',
+      message: '',
+    });
+  
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitMessage, setSubmitMessage] = useState('');
+    const handleChange = (e) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitMessage('');
+
+    try {
+      const response = await fetch('http://localhost:3002/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          service: 'Cloud & Platform Engineering',
+        }),
+      });
+
+      if (!response.ok) throw new Error();
+
+      setSubmitMessage("Thank you! We've sent you a confirmation email.");
+      setFormData({
+        name: '',
+        email: '',
+        organization: '',
+        message: '',
+      });
+    } catch (error) {
+      setSubmitMessage(
+        'Sorry, there was an error sending your message. Please try again.'
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+
   return (
     <>
       <Section
@@ -201,7 +251,64 @@ const Services = () => {
         subtitle="Describe your requirement and Tempest will respond with a practical proposal and timeline."
         id="service-form"
       >
-        <ServiceForm />
+        <form className="contact-form" onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label>Name *</label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Email *</label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Organization</label>
+            <input
+              type="text"
+              name="organization"
+              value={formData.organization}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Message *</label>
+            <textarea
+              rows="5"
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <PrimaryButton type="submit" disabled={isSubmitting}>
+            {isSubmitting ? 'Sending...' : 'Send Enquiry'}
+          </PrimaryButton>
+
+          {submitMessage && (
+            <p
+              className={`submit-message ${
+                submitMessage.includes('Thank you') ? 'success' : 'error'
+              }`}
+            >
+              {submitMessage}
+            </p>
+          )}
+        </form>
       </Section>
     </>
   );

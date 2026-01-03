@@ -66,8 +66,8 @@ const Home = () => {
           <div className="split-right card-grid animate-stagger">
             <div className="card float-card">
               <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Experience" className="card-image" />
-              <h3 className="card-title">20+ Years</h3>
-              <p className="card-body">Industry experience delivering enterprise systems.</p>
+              <h3 className="card-title">Built for Today</h3>
+              <p className="card-body">Modern engineering practices designed for fast-moving teams.</p>
             </div>
             <div className="card float-card">
               <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="AI-First" className="card-image" />
