@@ -1,0 +1,10 @@
+{
+	"name": "tempest_email_backend_function",
+	"version": "1.0.0",
+	"main": "index.js",
+	"author": "mokesh1811@gmail.com",
+	"dependencies": {
+		"nodemailer": "^7.0.12",
+		"zcatalyst-sdk-node": "latest"
+	}
+}

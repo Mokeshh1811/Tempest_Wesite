@@ -1,0 +1,30 @@
+{
+  "defaults": {
+    "project": 1,
+    "env": 1
+  },
+  "actives": {
+    "project": 1,
+    "env": 1
+  },
+  "projects": [
+    {
+      "idx": 1,
+      "id": "26834000000012001",
+      "name": "Tempest-Email-Backend",
+      "domain": {
+        "id": "50037488434",
+        "name": "tempest-email-backend-60062823191.development"
+      },
+      "timezone": "Asia/Kolkata",
+      "env": [
+        {
+          "idx": 1,
+          "id": "60062823191",
+          "name": "Development",
+          "type": 3
+        }
+      ]
+    }
+  ]
+}

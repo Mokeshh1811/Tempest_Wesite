@@ -1,0 +1,9 @@
+{
+  "functions": {
+    "targets": [
+      "tempest_email_backend_function"
+    ],
+    "ignore": [],
+    "source": "functions"
+  }
+}
