@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from './Navbar';
+import Chatbot from './Chatbot';
 import './Layout.css';
 
 const Layout = ({ children }) => {
@@ -32,6 +33,7 @@ const Layout = ({ children }) => {
           <span>© {new Date().getFullYear()} Tempest. All rights reserved.</span>
         </div>
       </footer>
+      <Chatbot />
     </>
   );
 };
