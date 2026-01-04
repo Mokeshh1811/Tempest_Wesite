@@ -4,7 +4,7 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT || 3003;
 
 // Middleware
 app.use(cors());
@@ -23,7 +23,7 @@ const transporter = nodemailer.createTransport({
 });
 
 // Email sending endpoint
-app.post('/api/send-email', async (req, res) => {
+app.post('http://localhost:3003/api/send-email', async (req, res) => {
   try {
     const { name, email, service, message, organization } = req.body;
 

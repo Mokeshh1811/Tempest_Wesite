@@ -11,14 +11,12 @@ const PythonInternship = () => {
     organization: '',
     message: ''
   });
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
@@ -27,26 +25,21 @@ const PythonInternship = () => {
     setSubmitMessage('');
 
     try {
-      const response = await fetch('/api/send-email', {
+      const response = await fetch('http://localhost:3003/api/send-email', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...formData,
           service: 'Python Internship'
         }),
       });
 
-      if (response.ok) {
-        setSubmitMessage('Thank you! We\'ve sent you a confirmation email.');
-        setFormData({ name: '', email: '', organization: '', message: '' });
-      } else {
-        throw new Error('Failed to send email');
-      }
-    } catch (error) {
-      console.error('Email send failed:', error);
-      setSubmitMessage('Sorry, there was an error sending your message. Please try again.');
+      if (!response.ok) throw new Error();
+
+      setSubmitMessage("Thank you! We've sent you a confirmation email.");
+      setFormData({ name: '', email: '', organization: '', message: '' });
+    } catch {
+      setSubmitMessage('Sorry, there was an error sending your message.');
     } finally {
       setIsSubmitting(false);
     }
@@ -54,99 +47,169 @@ const PythonInternship = () => {
 
   return (
     <>
+      {/* ================= INTERNSHIP OVERVIEW ================= */}
       <Section
         eyebrow="Python Internship"
         title="Practical Python programming and application development."
         subtitle="Build expertise in Python through hands-on projects in data science, web development, and automation."
       >
-        <div className="service-content">
-          <div className="service-overview">
-            <h3>Internship Program: Python Development</h3>
-            <p>Master Python programming with real-world applications in various domains.</p>
+        <div className="service-layout">
 
-            <h4>Skills Covered:</h4>
-            <ul>
-              <li>Python fundamentals and advanced concepts</li>
-              <li>Data structures and algorithms</li>
-              <li>Object-oriented programming</li>
-              <li>Web development with Django/Flask</li>
-              <li>Data analysis with Pandas and NumPy</li>
-            </ul>
+          {/* LEFT CONTENT */}
+          <div className="service-text">
+            <h3 className="service-heading">
+              Internship Program: Python Development
+            </h3>
 
-            <h4>Tools and Technologies:</h4>
-            <ul>
-              <li>Jupyter Notebook</li>
-              <li>Git and version control</li>
-              <li>APIs and web services</li>
-              <li>Database integration</li>
-              <li>Testing and debugging</li>
-            </ul>
+            <p>
+              Master Python programming with real-world applications across
+              data science, web development, and automation use cases.
+            </p>
 
-            <h4>Program Details:</h4>
-            <p><strong>Duration:</strong> 3-6 months | <strong>Format:</strong> Remote/On-site | <strong>Eligibility:</strong> Students and graduates</p>
+            <div className="service-block">
+              <h4>Skills Covered</h4>
+              <ul>
+                <li>Python fundamentals and advanced concepts</li>
+                <li>Data structures and algorithms</li>
+                <li>Object-oriented programming</li>
+                <li>Web development with Django / Flask</li>
+                <li>Data analysis using Pandas and NumPy</li>
+              </ul>
+            </div>
+
+            <div className="service-block">
+              <h4>Tools & Technologies</h4>
+              <ul>
+                <li>Jupyter Notebook</li>
+                <li>Git & version control</li>
+                <li>REST APIs & web services</li>
+                <li>Database integration</li>
+                <li>Testing & debugging</li>
+              </ul>
+            </div>
+
+            <div className="service-block">
+              <h4>Program Details</h4>
+              <p>
+                <strong>Duration:</strong> 3–6 months <br />
+                <strong>Format:</strong> Remote / On-site <br />
+                <strong>Eligibility:</strong> Students & Graduates
+              </p>
+            </div>
           </div>
+
+          {/* RIGHT VISUAL */}
+          <div className="service-visual">
+            <img
+              src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=2070&q=80"
+              alt="Python programming internship"
+              className="service-image"
+            />
+          </div>
+
         </div>
       </Section>
 
+      {/* ================= APPLICATION FORM ================= */}
       <Section
         eyebrow="Application form"
-        title="Apply for Python Internship."
-        subtitle="Fill in the details below to apply for the Python internship program."
+        title="Apply for Tempest bootcamps."
+        subtitle="Fill in the details below to apply for upcoming bootcamp batches."
       >
-        <form className="contact-form" onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="name">Name *</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
+        <div className="split-section">
+
+          {/* LEFT FORM */}
+          <div className="split-left slide-up">
+            <form className="contact-form" onSubmit={handleSubmit}>
+              <div className="form-group">
+                <label>Name *</label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Email *</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Institution / College *</label>
+                <input
+                  type="text"
+                  name="organization"
+                  value={formData.organization}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Why are you interested in this internship? *</label>
+                <textarea
+                  rows="4"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              <PrimaryButton type="submit" disabled={isSubmitting}>
+                {isSubmitting ? 'Sending…' : 'Apply Now'}
+              </PrimaryButton>
+
+              {submitMessage && (
+                <p
+                  className={`submit-message ${
+                    submitMessage.includes('Thank') ? 'success' : 'error'
+                  }`}
+                >
+                  {submitMessage}
+                </p>
+              )}
+            </form>
           </div>
-          <div className="form-group">
-            <label htmlFor="email">Email *</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
+
+          {/* RIGHT INFO */}
+          <div className="split-right card-grid animate-stagger">
+            <div className="card glow-card">
+              <h3 className="card-title">Connect With Us</h3>
+              <p className="card-body">
+                Follow us for updates, insights, and announcements.
+              </p>
+
+              <div className="social-icons">
+                <a href="https://www.linkedin.com/company/tempesthub/" target="_blank" rel="noreferrer">in</a>
+                <a href="https://x.com/Tempest_hub" target="_blank" rel="noreferrer">x</a>
+                <a href="https://www.facebook.com/profile.php?id=61585734515727" target="_blank" rel="noreferrer">fb</a>
+                <a href="https://www.instagram.com/tempest.hub?igsh=MXd2dDI5ZDZhNDVlZw==" target="_blank" rel="noreferrer">ig</a>
+              </div>
+            </div>
+
+            <div className="card glow-card">
+              <h3 className="card-title">Email Us</h3>
+              <p className="card-body">
+                Reach out directly for partnerships, training, or project discussions.
+              </p>
+
+              <a href="mailto:tempesthub01@gmail.com" className="email-link">
+                tempesthub01@gmail.com
+              </a>
+            </div>
           </div>
-          <div className="form-group">
-            <label htmlFor="organization">Institution/College *</label>
-            <input
-              type="text"
-              id="organization"
-              name="organization"
-              value={formData.organization}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="message">Why are you interested in this internship? *</label>
-            <textarea
-              id="message"
-              name="message"
-              rows="5"
-              value={formData.message}
-              onChange={handleChange}
-              required
-            ></textarea>
-          </div>
-          <PrimaryButton type="submit" disabled={isSubmitting}>
-            {isSubmitting ? 'Sending...' : 'Apply Now'}
-          </PrimaryButton>
-          {submitMessage && (
-            <p className={`submit-message ${submitMessage.includes('Thank you') ? 'success' : 'error'}`}>
-              {submitMessage}
-            </p>
-          )}
-        </form>
+
+        </div>
       </Section>
     </>
   );

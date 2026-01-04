@@ -14,7 +14,7 @@ const Layout = ({ children }) => {
         <div className="footer-inner">
           <div>
             <h4>Who we are</h4>
-            <p>Tempest is a technology studio led by Akshay, focused on turning ideas into impactful digital experiences with clear vision and mission.</p>
+            <p>Tempest is a technology and education studio focused on building real-world engineering capability through modern, hands-on programs and production-grade solutions.</p>
           </div>
           <div>
             <h4>What we do</h4>
@@ -22,18 +22,18 @@ const Layout = ({ children }) => {
           </div>
           <div>
             <h4>Career</h4>
-            <p>Write to careers@tempeststudio.com with your portfolio to explore roles in design, engineering and training.</p>
+            <p>Write to careers.tempesthub@gmail.com with your portfolio to explore roles in design, engineering and training.</p>
           </div>
           <div className="connect-section">
             <h4 className="connect-text">Let&apos;s connect</h4>
-            <p>Email: hello@tempeststudio.com<br />Phone: +91-9XXXXXXXXX</p>
+            <p>Email: tempesthub01@gmail.com<br /></p>
           </div>
         </div>
         <div className="footer-bottom">
           <span>© {new Date().getFullYear()} Tempest. All rights reserved.</span>
         </div>
       </footer>
-      <Chatbot />
+      {/* <Chatbot /> */}
     </>
   );
 };

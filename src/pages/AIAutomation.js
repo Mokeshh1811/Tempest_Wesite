@@ -37,7 +37,7 @@ const AIAutomation = () => {
     setSubmitMessage('');
 
     try {
-      const response = await fetch('/api/send-email', {
+      const response = await fetch('http://localhost:3003/api/send-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -70,7 +70,7 @@ const AIAutomation = () => {
         <div className="card-grid">
           <div className="card">
             <img
-              src="https://images.unsplash.com/photo-1534751516642-a1af1ef26a56?auto=format&fit=crop&w=2070&q=80"
+              src="https://www.unite.ai/wp-content/uploads/2023/09/Heisenbergforlife_Center_the_scene_in_zoomed_scope_around_a_hum_7f069632-eda5-4edd-858b-cb44fec82929.png"
               alt="AI agents and workflows"
               className="card-image"
             />
@@ -87,7 +87,7 @@ const AIAutomation = () => {
 
           <div className="card">
             <img
-              src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=2070&q=80"
+              src="/images/unsplash-1498050108023-c5249f4df085.jpg"
               alt="Custom AI models"
               className="card-image"
             />
@@ -104,7 +104,7 @@ const AIAutomation = () => {
 
           <div className="card">
             <img
-              src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=2070&q=80"
+              src="/images/best-ai-chatbot.png"
               alt="AI chatbot interface"
               className="card-image"
             />
@@ -121,7 +121,7 @@ const AIAutomation = () => {
 
           <div className="card">
             <img
-              src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=2070&q=80"
+              src="/images/bot8.jpeg"
               alt="RAG models"
               className="card-image"
             />
@@ -138,7 +138,7 @@ const AIAutomation = () => {
 
           <div className="card">
             <img
-              src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=2070&q=80"
+              src="/images/HighTech 11.png"
               alt="AI-powered automation"
               className="card-image"
             />
@@ -155,7 +155,7 @@ const AIAutomation = () => {
 
           <div className="card">
             <img
-              src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=2070&q=80"
+              src="https://static.vecteezy.com/system/resources/previews/036/184/700/non_2x/rpa-robotic-process-automation-concept-computer-robotic-process-automatisation-vector.jpg"
               alt="Workflow automation"
               className="card-image"
             />
@@ -175,9 +175,12 @@ const AIAutomation = () => {
       {/* ENQUIRY */}
       <Section
         eyebrow="Service enquiry"
-        title="Get in touch for AI & Automation services."
-        subtitle="Tell us about your AI needs and we'll get back to you within 24 hours."
+        title="Let’s design something impactful."
+        subtitle="Share your requirements and our team will reach out within 24 hours."
+        align="left"
       >
+        <div className="split-section">
+          <div className="split-left slide-up">
         <form className="contact-form" onSubmit={handleSubmit}>
           <div className="form-group">
             <label>Name *</label>
@@ -236,6 +239,36 @@ const AIAutomation = () => {
             </p>
           )}
         </form>
+          </div>
+                    <div className="split-right card-grid animate-stagger">
+
+            <div className="card glow-card">
+              <h3 className="card-title">Connect With Us</h3>
+              <p className="card-body">
+                Follow us for updates, insights, and announcements.
+              </p>
+
+              <div className="social-icons">
+                <a href="https://www.linkedin.com/company/tempesthub/" target="_blank" rel="noreferrer">in</a>
+                <a href="https://x.com/Tempest_hub" target="_blank" rel="noreferrer">x</a>
+                <a href="https://www.facebook.com/profile.php?id=61585734515727" target="_blank" rel="noreferrer">fb</a>
+                <a href="https://www.instagram.com/tempest.hub?igsh=MXd2dDI5ZDZhNDVlZw==" target="_blank" rel="noreferrer">ig</a>
+              </div>
+            </div>
+
+            <div className="card glow-card">
+              <h3 className="card-title">Email Us</h3>
+              <p className="card-body">
+                Reach out directly for partnerships, training, or project discussions.
+              </p>
+
+              <a href="mailto:tempesthub01@gmail.com" className="email-link">
+                tempesthub01@gmail.com
+              </a>
+            </div>
+
+          </div>
+        </div>
       </Section>
     </div>
   );

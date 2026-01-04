@@ -28,7 +28,7 @@ const Services = () => {
     setSubmitMessage('');
 
     try {
-      const response = await fetch('/api/send-email', {
+      const response = await fetch('http://localhost:3003/api/send-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -59,12 +59,45 @@ const Services = () => {
   return (
     <>
       <Section
-        eyebrow="What we do"
+        eyebrow="Cloud & Platform Engineering"
         title="Services that move ideas into production."
-        subtitle="Tempest offers structured services for institutions and businesses—covering UX/UI design, full‑stack engineering, and AI-first solutions."
+        subtitle="Tempest offers structured services for institutions and businesses—covering UX/UI design, full-stack engineering, and AI-first solutions."
       >
         <div className="card-grid">
           <div className="card">
+            <img
+              src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2070&q=80"
+              alt="Product & UX Design"
+              className="card-image"
+            />
+            <span className="card-tag">Experience</span>
+            <h3 className="card-title">Product & UX Design</h3>
+            <p className="card-body">
+              Research-backed UX, interface design systems, design audits and
+              clickable prototypes tailored for modern platforms.
+            </p>
+            {/* <Link to="/services/product-ux-design" className="card-read-more">
+              →
+            </Link> */}
+          </div>
+
+          <div className="card">
+            <img
+              src="https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?auto=format&fit=crop&w=2070&q=80"
+              alt="Application Development"
+              className="card-image"
+            />
+            <span className="card-tag">Engineering</span>
+            <h3 className="card-title">Application Development</h3>
+            <p className="card-body">
+              End-to-end development of performant, scalable web applications
+              using cloud-native architectures.
+            </p>
+            {/* <Link to="/services/application-development" className="card-read-more">
+              →
+            </Link> */}
+          </div>
+                    <div className="card">
             <img
               src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
               alt="Graphic Design"
@@ -75,28 +108,11 @@ const Services = () => {
             <p className="card-body">
               Creative graphic design services including branding, logos, marketing materials, and visual communication tailored to your needs.
             </p>
-            <Link to="/services/graphic-design" className="card-read-more" title="Read more">
+            {/* <Link to="/services/graphic-design" className="card-read-more" title="Read more">
               →
-            </Link>
+            </Link> */}
           </div>
-
-          <div className="card">
-            <img
-              src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-              alt="Website Development"
-              className="card-image"
-            />
-            <span className="card-tag">Development</span>
-            <h3 className="card-title">Website Development</h3>
-            <p className="card-body">
-              Custom website development using modern technologies, responsive design, and optimized performance for businesses and institutions.
-            </p>
-            <Link to="/services/website-development" className="card-read-more" title="Read more">
-              →
-            </Link>
-          </div>
-
-          <div className="card">
+                    <div className="card">
             <img
               src="https://images.unsplash.com/photo-1456324504439-367cee3b3c32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
               alt="Content Writing"
@@ -107,26 +123,45 @@ const Services = () => {
             <p className="card-body">
               Professional content writing services including blog posts, website copy, marketing materials, and SEO-optimized content.
             </p>
-            <Link to="/services/content-writing" className="card-read-more" title="Read more">
+            {/* <Link to="/services/content-writing" className="card-read-more" title="Read more">
               →
-            </Link>
+            </Link> */}
           </div>
 
           <div className="card">
             <img
-              src="https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-              alt="AI Solutions"
+              src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=2070&q=80"
+              alt="Consulting and Mentoring"
               className="card-image"
             />
-            <span className="card-tag">AI</span>
-            <h3 className="card-title">AI Solutions</h3>
+            <span className="card-tag">Enablement</span>
+            <h3 className="card-title">Consulting & Mentoring</h3>
             <p className="card-body">
-              Advanced AI solutions including machine learning, automation, chatbots, and custom AI models to enhance your business processes.
+              Technology roadmapping, architecture reviews and on-the-job
+              mentoring for internal teams.
             </p>
-            <Link to="/services/ai-solutions" className="card-read-more" title="Read more">
+            {/* <Link to="/services/consulting-mentoring" className="card-read-more">
               →
-            </Link>
+            </Link> */}
+            
           </div>
+          <div className="card">
+  <img
+    src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=2070&q=80"
+    alt="Video Editing & Production"
+    className="card-image"
+  />
+  <span className="card-tag">Media</span>
+  <h3 className="card-title">Video Editing & Production</h3>
+  <p className="card-body">
+    Professional video editing, motion graphics, and visual storytelling
+    tailored for brands, institutions, and digital platforms.
+  </p>
+  {/* <Link to="/services/video-editing-production" className="card-read-more">
+    →
+  </Link> */}
+</div>
+
         </div>
         <div style={{ textAlign: 'center', marginTop: '2rem' }}>
           <Link to="/services/cloud">
@@ -152,9 +187,9 @@ const Services = () => {
             <p className="card-body">
               Design, build and deploy task‑oriented AI agents that can triage tickets, monitor systems, orchestrate workflows and collaborate with your teams.
             </p>
-            <Link to="/services/ai-agents-development" className="card-read-more" title="Read more">
+            {/* <Link to="/services/ai-agents-development" className="card-read-more" title="Read more">
               →
-            </Link>
+            </Link> */}
           </div>
 
           <div className="card">
@@ -168,9 +203,9 @@ const Services = () => {
             <p className="card-body">
               Domain‑specific models, embeddings and pipelines crafted around your data and compliance requirements for accurate, explainable outcomes.
             </p>
-            <Link to="/services/custom-ai-solutions" className="card-read-more" title="Read more">
+            {/* <Link to="/services/custom-ai-solutions" className="card-read-more" title="Read more">
               →
-            </Link>
+            </Link> */}
           </div>
 
           <div className="card">
@@ -184,14 +219,14 @@ const Services = () => {
             <p className="card-body">
               Branded, multi‑channel chat experiences that integrate with your existing systems such as ticketing tools, ERPs and internal knowledge bases.
             </p>
-            <Link to="/services/ai-chatbot-integration" className="card-read-more" title="Read more">
+            {/* <Link to="/services/ai-chatbot-integration" className="card-read-more" title="Read more">
               →
-            </Link>
+            </Link> */}
           </div>
 
           <div className="card">
             <img
-              src="https://images.unsplash.com/photo-1509228468518-180dd4864904?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+              src="http://localhost:3002/images/bot8.jpeg"
               alt="Custom RAG Models"
               className="card-image"
             />
@@ -200,14 +235,14 @@ const Services = () => {
             <p className="card-body">
               Retrieval‑augmented generation setups that combine vector search, structured retrieval and guardrails to answer questions on your documents and APIs.
             </p>
-            <Link to="/services/custom-rag-models" className="card-read-more" title="Read more">
+            {/* <Link to="/services/custom-rag-models" className="card-read-more" title="Read more">
               →
-            </Link>
+            </Link> */}
           </div>
 
           <div className="card">
             <img
-              src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+              src="http://localhost:3002/images/HighTech%2011.png"
               alt="AI-Powered Automation"
               className="card-image"
             />
@@ -216,14 +251,14 @@ const Services = () => {
             <p className="card-body">
               Intelligent automation of repetitive decision‑making tasks such as classification, routing, summarization and quality checks.
             </p>
-            <Link to="/services/ai-powered-automation" className="card-read-more" title="Read more">
+            {/* <Link to="/services/ai-powered-automation" className="card-read-more" title="Read more">
               →
-            </Link>
+            </Link> */}
           </div>
 
           <div className="card">
             <img
-              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+              src="https://static.vecteezy.com/system/resources/previews/036/184/700/non_2x/rpa-robotic-process-automation-concept-computer-robotic-process-automatisation-vector.jpg"
               alt="Workflow Automation"
               className="card-image"
             />
@@ -232,9 +267,9 @@ const Services = () => {
             <p className="card-body">
               Hybrid workflows that connect AI reasoning with RPA bots and APIs, creating reliable end‑to‑end automation across legacy and modern systems.
             </p>
-            <Link to="/services/workflow-automation-rpa" className="card-read-more" title="Read more">
+            {/* <Link to="/services/workflow-automation-rpa" className="card-read-more" title="Read more">
               →
-            </Link>
+            </Link> */}
           </div>
         </div>
         <div style={{ textAlign: 'center', marginTop: '2rem' }}>
@@ -247,10 +282,12 @@ const Services = () => {
       {/* Service enquiry form at bottom of Services page */}
       <Section
         eyebrow="Service enquiry"
-        title="Share your project details."
-        subtitle="Describe your requirement and Tempest will respond with a practical proposal and timeline."
-        id="service-form"
+        title="Let’s design something impactful."
+        subtitle="Share your requirements and our team will reach out within 24 hours."
+        align="left"
       >
+        <div className="split-section">
+          <div className="split-left slide-up">
         <form className="contact-form" onSubmit={handleSubmit}>
           <div className="form-group">
             <label>Name *</label>
@@ -309,6 +346,36 @@ const Services = () => {
             </p>
           )}
         </form>
+          </div>
+                    <div className="split-right card-grid animate-stagger">
+
+            <div className="card glow-card">
+              <h3 className="card-title">Connect With Us</h3>
+              <p className="card-body">
+                Follow us for updates, insights, and announcements.
+              </p>
+
+              <div className="social-icons">
+                <a href="https://www.linkedin.com/company/tempesthub/" target="_blank" rel="noreferrer">in</a>
+                <a href="https://x.com/Tempest_hub" target="_blank" rel="noreferrer">x</a>
+                <a href="https://www.facebook.com/profile.php?id=61585734515727" target="_blank" rel="noreferrer">fb</a>
+                <a href="https://www.instagram.com/tempest.hub?igsh=MXd2dDI5ZDZhNDVlZw==" target="_blank" rel="noreferrer">ig</a>
+              </div>
+            </div>
+
+            <div className="card glow-card">
+              <h3 className="card-title">Email Us</h3>
+              <p className="card-body">
+                Reach out directly for partnerships, training, or project discussions.
+              </p>
+
+              <a href="mailto:tempesthub01@gmail.com" className="email-link">
+                tempesthub01@gmail.com
+              </a>
+            </div>
+
+          </div>
+        </div>
       </Section>
     </>
   );

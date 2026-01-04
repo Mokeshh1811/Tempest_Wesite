@@ -11,14 +11,12 @@ const ContentWriting = () => {
     organization: '',
     message: ''
   });
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
@@ -29,24 +27,19 @@ const ContentWriting = () => {
     try {
       const response = await fetch('/api/send-email', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...formData,
           service: 'Content Writing'
         }),
       });
 
-      if (response.ok) {
-        setSubmitMessage('Thank you! We\'ve sent you a confirmation email.');
-        setFormData({ name: '', email: '', organization: '', message: '' });
-      } else {
-        throw new Error('Failed to send email');
-      }
-    } catch (error) {
-      console.error('Email send failed:', error);
-      setSubmitMessage('Sorry, there was an error sending your message. Please try again.');
+      if (!response.ok) throw new Error();
+
+      setSubmitMessage("Thank you! We've sent you a confirmation email.");
+      setFormData({ name: '', email: '', organization: '', message: '' });
+    } catch {
+      setSubmitMessage('Sorry, there was an error sending your message.');
     } finally {
       setIsSubmitting(false);
     }
@@ -54,99 +47,169 @@ const ContentWriting = () => {
 
   return (
     <>
+      {/* ================= CONTENT WRITING OVERVIEW ================= */}
       <Section
         eyebrow="Content Writing"
         title="Engaging content that connects with your audience."
-        subtitle="Professional content writing services for websites, blogs, marketing materials, and more."
+        subtitle="Professional content writing for websites, blogs, marketing materials, and brand storytelling."
       >
-        <div className="service-content">
-          <div className="service-overview">
-            <h3>Content Writing Services</h3>
-            <p>Craft compelling content that informs, engages, and converts your audience into loyal customers.</p>
+        <div className="service-layout">
 
-            <h4>Services Offered:</h4>
-            <ul>
-              <li>Website content and copywriting</li>
-              <li>Blog posts and articles</li>
-              <li>SEO-optimized content</li>
-              <li>Social media content</li>
-              <li>Marketing materials and newsletters</li>
-            </ul>
+          {/* LEFT CONTENT */}
+          <div className="service-text">
+            <h3 className="service-heading">
+              Content Writing Services
+            </h3>
 
-            <h4>Content Types:</h4>
-            <ul>
-              <li>Product descriptions and landing pages</li>
-              <li>Educational and informative articles</li>
-              <li>Brand storytelling and narratives</li>
-              <li>Technical writing and documentation</li>
-              <li>Creative and promotional copy</li>
-            </ul>
+            <p>
+              We craft compelling, SEO-friendly content that informs, engages,
+              and converts—aligned with your brand voice and business goals.
+            </p>
 
-            <h4>Our Approach:</h4>
-            <p>Research → Strategy → Writing → Editing → Optimization → Delivery</p>
+            <div className="service-block">
+              <h4>Services Offered</h4>
+              <ul>
+                <li>Website content & copywriting</li>
+                <li>Blog posts & long-form articles</li>
+                <li>SEO-optimized content</li>
+                <li>Social media content</li>
+                <li>Marketing emails & newsletters</li>
+              </ul>
+            </div>
+
+            <div className="service-block">
+              <h4>Content Types</h4>
+              <ul>
+                <li>Landing pages & product descriptions</li>
+                <li>Educational & technical articles</li>
+                <li>Brand storytelling</li>
+                <li>Documentation & guides</li>
+                <li>Creative promotional copy</li>
+              </ul>
+            </div>
+
+            <div className="service-block">
+              <h4>Our Workflow</h4>
+              <p>
+                Research → Strategy → Writing → Editing → SEO Optimization → Delivery
+              </p>
+            </div>
           </div>
+
+          {/* RIGHT VISUAL */}
+          <div className="service-visual">
+            <img
+              src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=2070&q=80"
+              alt="Content writing workspace"
+              className="service-image"
+            />
+          </div>
+
         </div>
       </Section>
 
+      {/* ================= SERVICE ENQUIRY ================= */}
       <Section
         eyebrow="Service enquiry"
         title="Discuss your content needs."
-        subtitle="Tell us about your content requirements and we'll create a customized content strategy."
+        subtitle="Tell us about your requirements and we’ll design a tailored content strategy."
+        align="left"
       >
-        <form className="contact-form" onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="name">Name *</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
+        <div className="split-section">
+
+          {/* FORM */}
+          <div className="split-left slide-up">
+            <form className="contact-form" onSubmit={handleSubmit}>
+
+              <div className="form-group">
+                <label>Name *</label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Email *</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Company / Organization *</label>
+                <input
+                  type="text"
+                  name="organization"
+                  value={formData.organization}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Content Requirements *</label>
+                <textarea
+                  rows="5"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              <PrimaryButton type="submit" disabled={isSubmitting}>
+                {isSubmitting ? 'Sending...' : 'Submit Enquiry'}
+              </PrimaryButton>
+
+              {submitMessage && (
+                <p
+                  className={`submit-message ${
+                    submitMessage.includes('Thank you') ? 'success' : 'error'
+                  }`}
+                >
+                  {submitMessage}
+                </p>
+              )}
+            </form>
           </div>
-          <div className="form-group">
-            <label htmlFor="email">Email *</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
+
+          {/* RIGHT INFO CARDS */}
+          <div className="split-right card-grid animate-stagger">
+
+            <div className="card glow-card">
+              <h3 className="card-title">Connect With Us</h3>
+              <p className="card-body">
+                Follow us for insights, updates, and content best practices.
+              </p>
+
+              <div className="social-icons">
+                <a href="https://linkedin.com" target="_blank" rel="noreferrer">in</a>
+                <a href="https://twitter.com" target="_blank" rel="noreferrer">x</a>
+                <a href="https://instagram.com" target="_blank" rel="noreferrer">ig</a>
+              </div>
+            </div>
+
+            <div className="card glow-card">
+              <h3 className="card-title">Email Us</h3>
+              <p className="card-body">
+                Reach out directly for content partnerships or long-term retainers.
+              </p>
+
+              <a href="mailto:contact@tempest.com" className="email-link">
+                contact@tempest.com
+              </a>
+            </div>
+
           </div>
-          <div className="form-group">
-            <label htmlFor="organization">Company/Organization *</label>
-            <input
-              type="text"
-              id="organization"
-              name="organization"
-              value={formData.organization}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="message">Content Requirements *</label>
-            <textarea
-              id="message"
-              name="message"
-              rows="5"
-              value={formData.message}
-              onChange={handleChange}
-              required
-            ></textarea>
-          </div>
-          <PrimaryButton type="submit" disabled={isSubmitting}>
-            {isSubmitting ? 'Sending...' : 'Submit Enquiry'}
-          </PrimaryButton>
-          {submitMessage && (
-            <p className={`submit-message ${submitMessage.includes('Thank you') ? 'success' : 'error'}`}>
-              {submitMessage}
-            </p>
-          )}
-        </form>
+        </div>
       </Section>
     </>
   );

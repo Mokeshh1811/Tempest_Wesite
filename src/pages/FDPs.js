@@ -15,8 +15,8 @@ const FDPs = () => {
   return (
   <div className={`page-transition ${visible ? 'enter' : ''}`}>
       <Section
-        eyebrow="Faculty Development Programs (FDPs)"
-        title="Faculty development programs."
+        eyebrow="Training (FDPs)"
+        title="Training."
         subtitle="Hands‑on FDPs focused on teaching strategies, modern tooling, and integrating real‑world projects into curriculum and labs."
       >
         <div className="card-grid">
@@ -108,6 +108,7 @@ const FDPs = () => {
         title="Apply for Tempest FDPs."
         subtitle="Fill in the details below to nominate yourself or your institution for upcoming FDP batches."
       >
+        <div className="split-section">
         <form className="contact-form">
           <div className="form-group">
             <label htmlFor="name">Name *</label>
@@ -145,6 +146,33 @@ const FDPs = () => {
           </div>
           <PrimaryButton type="submit">Apply Now</PrimaryButton>
         </form>
+                  <div className="split-right card-grid animate-stagger">
+            <div className="card glow-card">
+              <h3 className="card-title">Connect With Us</h3>
+              <p className="card-body">
+                Follow us for updates, insights, and announcements.
+              </p>
+
+              <div className="social-icons">
+                <a href="https://www.linkedin.com/company/tempesthub/" target="_blank" rel="noreferrer">in</a>
+                <a href="https://x.com/Tempest_hub" target="_blank" rel="noreferrer">x</a>
+                <a href="https://www.facebook.com/profile.php?id=61585734515727" target="_blank" rel="noreferrer">fb</a>
+                <a href="https://www.instagram.com/tempest.hub?igsh=MXd2dDI5ZDZhNDVlZw==" target="_blank" rel="noreferrer">ig</a>
+              </div>
+            </div>
+
+            <div className="card glow-card">
+              <h3 className="card-title">Email Us</h3>
+              <p className="card-body">
+                Reach out directly for partnerships, training, or project discussions.
+              </p>
+
+              <a href="mailto:tempesthub01@gmail.com" className="email-link">
+                tempesthub01@gmail.com
+              </a>
+            </div>
+          </div>
+          </div>
       </Section>
     </div>
   );

@@ -3,6 +3,7 @@ import Section from '../components/Section';
 import PrimaryButton from '../components/PrimaryButton';
 import '../components/CardGrid.css';
 import '../components/Forms.css';
+import './ServicePage.css';
 
 const ProductUXDesign = () => {
   const [formData, setFormData] = useState({
@@ -14,12 +15,8 @@ const ProductUXDesign = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
+  const handleChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,26 +24,20 @@ const ProductUXDesign = () => {
     setSubmitMessage('');
 
     try {
-      const response = await fetch('/api/send-email', {
+      const response = await fetch('http://localhost:3003/api/send-email', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...formData,
-          service: 'Product & UX Design'
-        }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...formData, service: 'Product & UX Design' }),
       });
 
       if (response.ok) {
-        setSubmitMessage('Thank you! We\'ve sent you a confirmation email.');
+        setSubmitMessage("Thank you! We've sent you a confirmation email.");
         setFormData({ name: '', email: '', organization: '', message: '' });
       } else {
-        throw new Error('Failed to send email');
+        throw new Error();
       }
-    } catch (error) {
-      console.error('Email send failed:', error);
-      setSubmitMessage('Sorry, there was an error sending your message. Please try again.');
+    } catch {
+      setSubmitMessage('Sorry, there was an error sending your message.');
     } finally {
       setIsSubmitting(false);
     }
@@ -54,97 +45,148 @@ const ProductUXDesign = () => {
 
   return (
     <>
+      {/* ================= HERO / OVERVIEW ================= */}
       <Section
         eyebrow="Product & UX Design"
-        title="Research-backed UX, interface design systems."
-        subtitle="Design audits, clickable prototypes, and user-centered design principles tailored for web platforms, portals, and internal tools."
+        title="Design systems and experiences users love."
+        subtitle="We design intuitive, scalable, and research-backed digital experiences that align business goals with user needs."
       >
-        <div className="service-content">
-          <div className="service-overview">
-            <h3>Our Design Process</h3>
-            <p>We follow a comprehensive design methodology that combines user research, iterative prototyping, and data-driven decisions to create exceptional digital experiences.</p>
+        <div className="service-layout">
 
-            <h4>Key Deliverables:</h4>
-            <ul>
-              <li>User research and persona development</li>
-              <li>Information architecture and user flows</li>
-              <li>Wireframes and interactive prototypes</li>
-              <li>Visual design systems and component libraries</li>
-              <li>Usability testing and design validation</li>
-              <li>Design handoff documentation</li>
-            </ul>
+          {/* LEFT */}
+          <div className="service-text">
+            <h3 className="service-heading">Our Approach</h3>
+            <p>
+              We combine user research, rapid prototyping, and design systems to
+              craft interfaces that are intuitive, scalable, and production-ready.
+            </p>
 
-            <h4>Design Tools & Technologies:</h4>
-            <p>Figma, Adobe Creative Suite, Sketch, InVision, Maze, Hotjar, Google Analytics</p>
+            <div className="service-block">
+              <h4>What We Deliver</h4>
+              <ul>
+                <li>User research & persona mapping</li>
+                <li>Information architecture & user flows</li>
+                <li>Wireframes & clickable prototypes</li>
+                <li>Design systems & component libraries</li>
+                <li>Usability testing & iteration</li>
+                <li>Developer-ready handoff</li>
+              </ul>
+            </div>
+
+            <div className="service-block">
+              <h4>Tools We Use</h4>
+              <p>Figma, Adobe Creative Cloud, Maze, Hotjar, Google Analytics</p>
+            </div>
           </div>
-          <div className="service-image">
+
+          {/* RIGHT */}
+          <div className="service-visual">
             <img
-              src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+              src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=2070&q=80"
               alt="UX Design Process"
-              className="service-hero-image"
+              className="service-image"
             />
           </div>
         </div>
       </Section>
 
+      {/* ================= CONTACT ================= */}
       <Section
         eyebrow="Service enquiry"
-        title="Get in touch for Product & UX Design services."
-        subtitle="Tell us about your design needs and we'll get back to you within 24 hours."
+        title="Let’s design something impactful."
+        subtitle="Share your requirements and our team will reach out within 24 hours."
+        align="left"
       >
+        <div className="split-section">
+          <div className="split-left slide-up">
         <form className="contact-form" onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="name">Name *</label>
+            <label>Name *</label>
             <input
               type="text"
-              id="name"
               name="name"
               value={formData.name}
               onChange={handleChange}
               required
             />
           </div>
+
           <div className="form-group">
-            <label htmlFor="email">Email *</label>
+            <label>Email *</label>
             <input
               type="email"
-              id="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
               required
             />
           </div>
+
           <div className="form-group">
-            <label htmlFor="organization">Organization</label>
+            <label>Organization</label>
             <input
               type="text"
-              id="organization"
               name="organization"
               value={formData.organization}
               onChange={handleChange}
             />
           </div>
+
           <div className="form-group">
-            <label htmlFor="message">Message *</label>
+            <label>Message *</label>
             <textarea
-              id="message"
-              name="message"
               rows="5"
+              name="message"
               value={formData.message}
               onChange={handleChange}
               required
-            ></textarea>
+            />
           </div>
+
           <PrimaryButton type="submit" disabled={isSubmitting}>
             {isSubmitting ? 'Sending...' : 'Send Enquiry'}
           </PrimaryButton>
+
           {submitMessage && (
-            <p className={`submit-message ${submitMessage.includes('Thank you') ? 'success' : 'error'}`}>
+            <p
+              className={`submit-message ${
+                submitMessage.includes('Thank you') ? 'success' : 'error'
+              }`}
+            >
               {submitMessage}
             </p>
           )}
         </form>
+          </div>
+                    <div className="split-right card-grid animate-stagger">
+
+            <div className="card glow-card">
+              <h3 className="card-title">Connect With Us</h3>
+              <p className="card-body">
+                Follow us for updates, insights, and announcements.
+              </p>
+
+              <div className="social-icons">
+                <a href="https://www.linkedin.com/company/tempesthub/" target="_blank" rel="noreferrer">in</a>
+                <a href="https://x.com/Tempest_hub" target="_blank" rel="noreferrer">x</a>
+                <a href="https://www.facebook.com/profile.php?id=61585734515727" target="_blank" rel="noreferrer">fb</a>
+                <a href="https://www.instagram.com/tempest.hub?igsh=MXd2dDI5ZDZhNDVlZw==" target="_blank" rel="noreferrer">ig</a>
+              </div>
+            </div>
+
+            <div className="card glow-card">
+              <h3 className="card-title">Email Us</h3>
+              <p className="card-body">
+                Reach out directly for partnerships, training, or project discussions.
+              </p>
+
+              <a href="mailto:tempesthub01@gmail.com" className="email-link">
+                tempesthub01@gmail.com
+              </a>
+            </div>
+
+          </div>
+        </div>
       </Section>
     </>
   );

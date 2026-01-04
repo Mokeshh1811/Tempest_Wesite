@@ -4,11 +4,11 @@ import PrimaryButton from '../components/PrimaryButton';
 import '../components/Forms.css';
 import './Contact.css';
 import { 
-  FaPhoneAlt, 
   FaEnvelope, 
-  FaMapMarkerAlt, 
   FaLinkedin, 
   FaInstagram,
+  FaFacebookF,
+  FaTwitter,
   FaPaperPlane,
   FaCheckCircle
 } from 'react-icons/fa';
@@ -22,12 +22,11 @@ const Contact = () => {
         title="Let's connect with Tempest."
         subtitle="Reach out for collaborations, campus programs or project discussions."
       >
-        {/* Decorative background elements */}
         <div className="contact-bg-decoration">
           <div className="glow-orb glow-orb-1"></div>
           <div className="glow-orb glow-orb-2"></div>
         </div>
-        
+
         <div className="contact-grid">
           <ContactForm />
           <ContactInfo />
@@ -37,6 +36,8 @@ const Contact = () => {
   );
 };
 
+/* ================= CONTACT FORM ================= */
+
 const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -44,6 +45,7 @@ const ContactForm = () => {
     phone: '',
     enquiry: ''
   });
+
   const [focused, setFocused] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -52,24 +54,44 @@ const ContactForm = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false);
+
+    try {
+      const response = await fetch('http://localhost:3003/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.enquiry,
+          service: 'Contact Page Enquiry',
+          organization: 'Website Visitor',
+          phone: formData.phone
+        }),
+      });
+
+      if (!response.ok) throw new Error('Email failed');
+
       setIsSubmitted(true);
-    }, 1500);
+      setFormData({ name: '', email: '', phone: '', enquiry: '' });
+
+    } catch (error) {
+      console.error(error);
+      alert('Sorry, something went wrong. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  // Success State
+  /* ---------- SUCCESS STATE ---------- */
   if (isSubmitted) {
     return (
       <div className="form-card-wrapper">
-        {/* Image Header */}
         <div className="form-image-wrapper">
           <img
-            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2070&q=80"
             alt="Team collaboration"
             className="form-image"
           />
@@ -77,21 +99,15 @@ const ContactForm = () => {
             <span>Let's Collaborate</span>
           </div>
         </div>
-        
-        {/* Success Content */}
+
         <div className="generic-form success-state">
           <div className="success-content">
-            <div className="success-icon-wrapper">
-              <FaCheckCircle className="success-icon" />
-            </div>
+            <FaCheckCircle className="success-icon" />
             <h3>Message Sent!</h3>
             <p>Thank you for reaching out. We'll get back to you within 24 hours.</p>
-            <button 
+            <button
               className="reset-btn"
-              onClick={() => {
-                setIsSubmitted(false);
-                setFormData({ name: '', email: '', phone: '', enquiry: '' });
-              }}
+              onClick={() => setIsSubmitted(false)}
             >
               Send Another Message
             </button>
@@ -101,13 +117,12 @@ const ContactForm = () => {
     );
   }
 
-  // Form State
+  /* ---------- FORM STATE ---------- */
   return (
     <div className="form-card-wrapper">
-      {/* Image Header */}
       <div className="form-image-wrapper">
         <img
-          src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+          src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2070&q=80"
           alt="Team collaboration"
           className="form-image"
         />
@@ -115,75 +130,71 @@ const ContactForm = () => {
           <span>Let's Collaborate</span>
         </div>
       </div>
-      
-      {/* Form Content */}
+
       <form className="generic-form" onSubmit={handleSubmit}>
         <div className="form-header">
           <HiSparkles className="form-header-icon" />
           <span>Send us a message</span>
         </div>
-        
+
         <div className="form-row">
           <label className={focused === 'name' || formData.name ? 'active' : ''}>
             <span className="label-text">Name *</span>
-            <input 
-              type="text" 
+            <input
+              type="text"
               name="name"
               value={formData.name}
               onChange={handleChange}
               onFocus={() => setFocused('name')}
               onBlur={() => setFocused('')}
-              required 
+              required
             />
-            <span className="input-highlight"></span>
           </label>
+
           <label className={focused === 'email' || formData.email ? 'active' : ''}>
             <span className="label-text">Email *</span>
-            <input 
-              type="email" 
+            <input
+              type="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
               onFocus={() => setFocused('email')}
               onBlur={() => setFocused('')}
-              required 
+              required
             />
-            <span className="input-highlight"></span>
           </label>
         </div>
-        
+
         <div className="form-row single">
           <label className={focused === 'phone' || formData.phone ? 'active' : ''}>
-            <span className="label-text">Phone number *</span>
-            <input 
-              type="tel" 
+            <span className="label-text">Phone *</span>
+            <input
+              type="tel"
               name="phone"
               value={formData.phone}
               onChange={handleChange}
               onFocus={() => setFocused('phone')}
               onBlur={() => setFocused('')}
-              required 
+              required
             />
-            <span className="input-highlight"></span>
           </label>
         </div>
-        
+
         <div className="form-row single">
           <label className={focused === 'enquiry' || formData.enquiry ? 'active' : ''}>
             <span className="label-text">Enquiry</span>
-            <textarea 
-              rows="4" 
+            <textarea
+              rows="4"
               name="enquiry"
               value={formData.enquiry}
               onChange={handleChange}
               onFocus={() => setFocused('enquiry')}
               onBlur={() => setFocused('')}
-              placeholder="Share your question or requirement..." 
+              placeholder="Share your question or requirement..."
             />
-            <span className="input-highlight"></span>
           </label>
         </div>
-        
+
         <PrimaryButton type="submit" disabled={isSubmitting}>
           {isSubmitting ? (
             <span className="btn-loading">
@@ -192,8 +203,7 @@ const ContactForm = () => {
             </span>
           ) : (
             <span className="btn-content">
-              Get in touch
-              <FaPaperPlane className="btn-icon" />
+              Get in touch <FaPaperPlane />
             </span>
           )}
         </PrimaryButton>
@@ -202,36 +212,38 @@ const ContactForm = () => {
   );
 };
 
+/* ================= CONTACT INFO ================= */
+
 const ContactInfo = () => {
   const contactItems = [
     {
-      icon: FaMapMarkerAlt,
-      content: <>Tempest Studio<br />Chennai, Tamil Nadu, India</>,
-      href: 'https://maps.google.com',
-      label: 'View on Map'
-    },
-    {
-      icon: FaPhoneAlt,
-      content: '+91-98XXXXXXXX',
-      href: 'tel:+9198XXXXXXXX',
-      label: 'Call Us'
-    },
-    {
       icon: FaEnvelope,
-      content: 'hello@tempeststudio.com',
-      href: 'mailto:hello@tempeststudio.com',
+      content: 'tempesthub01@gmail.com',
+      href: 'mailto:tempesthub01@gmail.com',
       label: 'Email Us'
     },
     {
       icon: FaLinkedin,
-      content: 'linkedin.com/company/tempest-studio',
-      href: 'https://linkedin.com/company/tempest-studio',
+      content: 'linkedin.com/company/tempesthub',
+      href: 'https://www.linkedin.com/company/tempesthub/',
       label: 'LinkedIn'
     },
     {
+      icon: FaTwitter,
+      content: 'x.com/Tempest_hub',
+      href: 'https://x.com/Tempest_hub',
+      label: 'Twitter'
+    },
+    {
+      icon: FaFacebookF,
+      content: 'facebook.com/tempest.hub',
+      href: 'https://www.facebook.com/profile.php?id=61585734515727',
+      label: 'Facebook'
+    },
+    {
       icon: FaInstagram,
-      content: '@tempest.studio',
-      href: 'https://instagram.com/tempest.studio',
+      content: '@tempest.hub',
+      href: 'https://www.instagram.com/tempest.hub',
       label: 'Instagram'
     }
   ];

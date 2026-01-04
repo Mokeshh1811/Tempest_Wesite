@@ -38,7 +38,7 @@ Response Headers: {"server":"ZGS","date":"Sat, 03 Jan 2026 10:19:30 GMT","conten
 [info] [2026-01-03T10:19:30.981Z] : i tempest_email_backend_function: http://localhost:3000/server/tempest_email_backend_function/
 [info] [2026-01-03T10:19:30.982Z] : 
 [info] [2026-01-03T10:19:38.238Z] : [1767435578238]  "GET"  "/server/tempest_email_backend_function/"
-[info] [2026-01-03T10:20:18.864Z] : [1767435618864]  "GET"  "/server/tempest_email_backend_function/api/send-email"
+[info] [2026-01-03T10:20:18.864Z] : [1767435618864]  "GET"  "/server/tempest_email_backend_functionhttp://localhost:3003/api/send-email"
 [info] [2026-01-03T10:21:35.995Z] : 
 change of index.js in tempest_email_backend_function detected. Preparing your function, please wait...
 [info] [2026-01-03T10:21:36.876Z] : i AdvancedIO[tempest_email_backend_function]: ready!

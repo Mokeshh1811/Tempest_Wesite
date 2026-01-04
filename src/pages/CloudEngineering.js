@@ -37,7 +37,7 @@ const CloudEngineering = () => {
     setSubmitMessage('');
 
     try {
-      const response = await fetch('/api/send-email', {
+      const response = await fetch('http://localhost:3003/api/send-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -106,6 +106,36 @@ const CloudEngineering = () => {
               →
             </Link>
           </div>
+                    <div className="card">
+            <img
+              src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+              alt="Graphic Design"
+              className="card-image"
+            />
+            <span className="card-tag">Design</span>
+            <h3 className="card-title">Graphic Design</h3>
+            <p className="card-body">
+              Creative graphic design services including branding, logos, marketing materials, and visual communication tailored to your needs.
+            </p>
+            <Link to="/services/graphic-design" className="card-read-more" title="Read more">
+              →
+            </Link>
+          </div>
+                    <div className="card">
+            <img
+              src="https://images.unsplash.com/photo-1456324504439-367cee3b3c32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+              alt="Content Writing"
+              className="card-image"
+            />
+            <span className="card-tag">Content</span>
+            <h3 className="card-title">Content Writing</h3>
+            <p className="card-body">
+              Professional content writing services including blog posts, website copy, marketing materials, and SEO-optimized content.
+            </p>
+            <Link to="/services/content-writing" className="card-read-more" title="Read more">
+              →
+            </Link>
+          </div>
 
           <div className="card">
             <img
@@ -122,16 +152,36 @@ const CloudEngineering = () => {
             <Link to="/services/consulting-mentoring" className="card-read-more">
               →
             </Link>
+            
           </div>
+          <div className="card">
+  <img
+    src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=2070&q=80"
+    alt="Video Editing & Production"
+    className="card-image"
+  />
+  <span className="card-tag">Media</span>
+  <h3 className="card-title">Video Editing & Production</h3>
+  <p className="card-body">
+    Professional video editing, motion graphics, and visual storytelling
+    tailored for brands, institutions, and digital platforms.
+  </p>
+  <Link to="/services/video-editing-production" className="card-read-more">
+    →
+  </Link>
+</div>
         </div>
       </Section>
 
       {/* ENQUIRY SECTION */}
       <Section
         eyebrow="Service enquiry"
-        title="Get in touch for Cloud & Platform Engineering services."
-        subtitle="Tell us about your project and we'll get back to you within 24 hours."
+        title="Let’s design something impactful."
+        subtitle="Share your requirements and our team will reach out within 24 hours."
+        align="left"
       >
+        <div className="split-section">
+          <div className="split-left slide-up">
         <form className="contact-form" onSubmit={handleSubmit}>
           <div className="form-group">
             <label>Name *</label>
@@ -190,6 +240,36 @@ const CloudEngineering = () => {
             </p>
           )}
         </form>
+          </div>
+                    <div className="split-right card-grid animate-stagger">
+
+            <div className="card glow-card">
+              <h3 className="card-title">Connect With Us</h3>
+              <p className="card-body">
+                Follow us for updates, insights, and announcements.
+              </p>
+
+              <div className="social-icons">
+                <a href="https://www.linkedin.com/company/tempesthub/" target="_blank" rel="noreferrer">in</a>
+                <a href="https://x.com/Tempest_hub" target="_blank" rel="noreferrer">x</a>
+                <a href="https://www.facebook.com/profile.php?id=61585734515727" target="_blank" rel="noreferrer">fb</a>
+                <a href="https://www.instagram.com/tempest.hub?igsh=MXd2dDI5ZDZhNDVlZw==" target="_blank" rel="noreferrer">ig</a>
+              </div>
+            </div>
+
+            <div className="card glow-card">
+              <h3 className="card-title">Email Us</h3>
+              <p className="card-body">
+                Reach out directly for partnerships, training, or project discussions.
+              </p>
+
+              <a href="mailto:tempesthub01@gmail.com" className="email-link">
+                tempesthub01@gmail.com
+              </a>
+            </div>
+
+          </div>
+        </div>
       </Section>
     </div>
   );

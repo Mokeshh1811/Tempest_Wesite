@@ -7,20 +7,75 @@ import '../components/Forms.css';
 import './PageTransition.css';
 
 const Bootcamps = () => {
-    const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(false);
+
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    bootcamp: '',
+    experience: ''
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
 
   useEffect(() => {
     setVisible(true);
   }, []);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitMessage('');
+
+    try {
+      const response = await fetch('http://localhost:3003/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          service: 'Bootcamp / Internship Application',
+          organization: formData.bootcamp,
+          message: `
+Phone: ${formData.phone}
+Experience Level: ${formData.experience}
+          `
+        }),
+      });
+
+      if (!response.ok) throw new Error();
+
+      setSubmitMessage("Thank you! We've sent you a confirmation email.");
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        bootcamp: '',
+        experience: ''
+      });
+    } catch {
+      setSubmitMessage('Sorry, there was an error sending your message.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className={`page-transition ${visible ? 'enter' : ''}`}>
+      {/* ================= BOOTCAMPS LIST ================= */}
       <Section
-        eyebrow="Bootcamps"
-        title="Industry-ready bootcamps."
-        subtitle="Short, high‑intensity programs on full‑stack development, APIs, cloud and AI that culminate in deployable projects and portfolios."
+        eyebrow="Training"
+        title="Training."
+        subtitle="Hands‑on training focused on teaching strategies, modern tooling, and integrating real‑world projects into curriculum and labs."
       >
         <div className="card-grid">
-          
+
           <div className="card">
             <img
               src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
@@ -103,49 +158,128 @@ const Bootcamps = () => {
         </div>
       </Section>
 
+      {/* ================= APPLICATION FORM ================= */}
       <Section
         eyebrow="Application form"
-        title="Apply for Tempest bootcamps."
-        subtitle="Fill in the details below to apply for upcoming bootcamp batches."
+        title="Apply for Tempest Training."
+        subtitle="Fill in the details below to apply for upcoming training batches."
       >
-        <form className="contact-form">
-          <div className="form-group">
-            <label htmlFor="name">Name *</label>
-            <input type="text" id="name" name="name" required />
+        <div className="split-section">
+          <div className="split-left slide-up">
+            <form className="contact-form" onSubmit={handleSubmit}>
+              <div className="form-group">
+                <label>Name *</label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Email *</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Phone Number *</label>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Preferred training or Internship</label>
+                <select
+                  name="bootcamp"
+                  value={formData.bootcamp}
+                  onChange={handleChange}
+                >
+                  <option value="">Select</option>
+                  <option value="SQL Internship">SQL Internship</option>
+                  <option value="Python Internship">Python Internship</option>
+                  <option value="Website Development Internship">
+                    Website Development Internship
+                  </option>
+                  <option value="UI & UX Internship">UI & UX Internship</option>
+                  <option value="Graphic Design Internship">
+                    Graphic Design Internship
+                  </option>
+                </select>
+              </div>
+
+              <div className="form-group">
+                <label>Experience Level</label>
+                <select
+                  name="experience"
+                  value={formData.experience}
+                  onChange={handleChange}
+                >
+                  <option value="">Select</option>
+                  <option value="Beginner">Beginner</option>
+                  <option value="Intermediate">Intermediate</option>
+                  <option value="Advanced">Advanced</option>
+                </select>
+              </div>
+
+              <PrimaryButton type="submit" disabled={isSubmitting}>
+                {isSubmitting ? 'Submitting…' : 'Apply Now'}
+              </PrimaryButton>
+
+              {submitMessage && (
+                <p
+                  className={`submit-message ${
+                    submitMessage.includes('Thank')
+                      ? 'success'
+                      : 'error'
+                  }`}
+                >
+                  {submitMessage}
+                </p>
+              )}
+            </form>
           </div>
-          <div className="form-group">
-            <label htmlFor="email">Email *</label>
-            <input type="email" id="email" name="email" required />
+
+          {/* RIGHT INFO — unchanged */}
+          <div className="split-right card-grid animate-stagger">
+            <div className="card glow-card">
+              <h3 className="card-title">Connect With Us</h3>
+              <p className="card-body">
+                Follow us for updates, insights, and announcements.
+              </p>
+
+              <div className="social-icons">
+                <a href="https://www.linkedin.com/company/tempesthub/" target="_blank" rel="noreferrer">in</a>
+                <a href="https://x.com/Tempest_hub" target="_blank" rel="noreferrer">x</a>
+                <a href="https://www.facebook.com/profile.php?id=61585734515727" target="_blank" rel="noreferrer">fb</a>
+                <a href="https://www.instagram.com/tempest.hub?igsh=MXd2dDI5ZDZhNDVlZw==" target="_blank" rel="noreferrer">ig</a>
+              </div>
+            </div>
+
+            <div className="card glow-card">
+              <h3 className="card-title">Email Us</h3>
+              <p className="card-body">
+                Reach out directly for partnerships, training, or project discussions.
+              </p>
+
+              <a href="mailto:tempesthub01@gmail.com" className="email-link">
+                tempesthub01@gmail.com
+              </a>
+            </div>
           </div>
-          <div className="form-group">
-            <label htmlFor="phone">Phone Number *</label>
-            <input type="tel" id="phone" name="phone" required />
-          </div>
-          <div className="form-group">
-            <label htmlFor="bootcamp">Preferred Bootcamp or Internship</label>
-            <select id="bootcamp" name="bootcamp">
-              <option value="">Select</option>
-              <option value="web">Web Development</option>
-              <option value="cloud">Cloud Engineering</option>
-              <option value="ai">AI Bootcamp</option>
-              <option value="sql-internship">SQL Internship</option>
-              <option value="python-internship">Python Internship</option>
-              <option value="web-dev-internship">Website Development Internship</option>
-              <option value="ui-ux-internship">UI & UX Internship</option>
-              <option value="graphic-design-internship">Graphic Design Internship</option>
-            </select>
-          </div>
-          <div className="form-group">
-            <label htmlFor="experience">Experience Level</label>
-            <select id="experience" name="experience">
-              <option value="">Select</option>
-              <option value="beginner">Beginner</option>
-              <option value="intermediate">Intermediate</option>
-              <option value="advanced">Advanced</option>
-            </select>
-          </div>
-          <PrimaryButton type="submit">Apply Now</PrimaryButton>
-        </form>
+        </div>
       </Section>
     </div>
   );

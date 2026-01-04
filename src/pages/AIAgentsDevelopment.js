@@ -3,6 +3,7 @@ import Section from '../components/Section';
 import PrimaryButton from '../components/PrimaryButton';
 import '../components/CardGrid.css';
 import '../components/Forms.css';
+import './ServicePage.css';
 
 const AIAgentsDevelopment = () => {
   const [formData, setFormData] = useState({
@@ -15,10 +16,7 @@ const AIAgentsDevelopment = () => {
   const [submitMessage, setSubmitMessage] = useState('');
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
@@ -27,26 +25,20 @@ const AIAgentsDevelopment = () => {
     setSubmitMessage('');
 
     try {
-      const response = await fetch('/api/send-email', {
+      const response = await fetch('http://localhost:3003/api/send-email', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...formData,
-          service: 'AI Agents Development'
-        }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...formData, service: 'AI Agents Development' }),
       });
 
       if (response.ok) {
-        setSubmitMessage('Thank you! We\'ve sent you a confirmation email.');
+        setSubmitMessage("Thank you! We've sent you a confirmation email.");
         setFormData({ name: '', email: '', organization: '', message: '' });
       } else {
-        throw new Error('Failed to send email');
+        throw new Error();
       }
-    } catch (error) {
-      console.error('Email send failed:', error);
-      setSubmitMessage('Sorry, there was an error sending your message. Please try again.');
+    } catch {
+      setSubmitMessage('Sorry, there was an error sending your message.');
     } finally {
       setIsSubmitting(false);
     }
@@ -54,98 +46,160 @@ const AIAgentsDevelopment = () => {
 
   return (
     <>
+      {/* ================= HERO / OVERVIEW ================= */}
       <Section
         eyebrow="AI Agents Development"
-        title="Design, build and deploy task-oriented AI agents."
-        subtitle="AI agents that can triage tickets, monitor systems, orchestrate workflows, and collaborate with your teams."
+        title="Intelligent agents that work alongside your teams."
+        subtitle="We design and deploy task-oriented AI agents that automate operations, coordinate workflows, and make real-time decisions."
       >
-        <div className="service-content">
-          <div className="service-overview">
-            <h3>AI Agent Capabilities</h3>
-            <p>We develop intelligent AI agents that automate complex tasks and enhance team productivity.</p>
+        <div className="service-layout">
 
-            <h4>Agent Types:</h4>
-            <ul>
-              <li>Customer support and ticketing agents</li>
-              <li>System monitoring and alerting agents</li>
-              <li>Workflow orchestration agents</li>
-              <li>Data analysis and reporting agents</li>
-              <li>Collaborative team assistant agents</li>
-            </ul>
+          {/* LEFT */}
+          <div className="service-text">
+            <h3 className="service-heading">Agent Capabilities</h3>
+            <p>
+              Our AI agents are built to operate reliably within real production
+              environments—integrating tools, data, and workflows to reduce
+              manual effort and accelerate outcomes.
+            </p>
 
-            <h4>Technical Implementation:</h4>
-            <ul>
-              <li>Large Language Models (GPT, Claude, etc.)</li>
-              <li>Function calling and tool integration</li>
-              <li>Memory and context management</li>
-              <li>Multi-modal capabilities</li>
-              <li>Real-time decision making</li>
-            </ul>
+            <div className="service-block">
+              <h4>Agent Types</h4>
+              <ul>
+                <li>Customer support & ticket triage agents</li>
+                <li>System monitoring & alerting agents</li>
+                <li>Workflow orchestration agents</li>
+                <li>Data analysis & reporting agents</li>
+                <li>Collaborative team assistant agents</li>
+              </ul>
+            </div>
 
-            <h4>Integration Options:</h4>
-            <p>Slack, Microsoft Teams, Discord, custom APIs, existing business systems</p>
+            <div className="service-block">
+              <h4>Technical Implementation</h4>
+              <ul>
+                <li>LLMs (GPT, Claude, open-source models)</li>
+                <li>Function calling & tool integration</li>
+                <li>Memory, context & state management</li>
+                <li>Multi-agent coordination patterns</li>
+                <li>Real-time reasoning & execution</li>
+              </ul>
+            </div>
+
+            <div className="service-block">
+              <h4>Integrations</h4>
+              <p>Slack, Microsoft Teams, Discord, internal tools, custom APIs</p>
+            </div>
           </div>
+
+          {/* RIGHT */}
+          <div className="service-visual">
+            <img
+              src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=2070&q=80"
+              alt="AI Agents"
+              className="service-image"
+            />
+          </div>
+
         </div>
       </Section>
 
+      {/* ================= CONTACT ================= */}
       <Section
         eyebrow="Service enquiry"
-        title="Get in touch for AI Agents Development services."
-        subtitle="Tell us about your AI agent requirements and we'll get back to you within 24 hours."
+        title="Let’s design something impactful."
+        subtitle="Share your requirements and our team will reach out within 24 hours."
+        align="left"
       >
+        <div className="split-section">
+          <div className="split-left slide-up">
         <form className="contact-form" onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="name">Name *</label>
+            <label>Name *</label>
             <input
               type="text"
-              id="name"
               name="name"
               value={formData.name}
               onChange={handleChange}
               required
             />
           </div>
+
           <div className="form-group">
-            <label htmlFor="email">Email *</label>
+            <label>Email *</label>
             <input
               type="email"
-              id="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
               required
             />
           </div>
+
           <div className="form-group">
-            <label htmlFor="organization">Organization</label>
+            <label>Organization</label>
             <input
               type="text"
-              id="organization"
               name="organization"
               value={formData.organization}
               onChange={handleChange}
             />
           </div>
+
           <div className="form-group">
-            <label htmlFor="message">Message *</label>
+            <label>Message *</label>
             <textarea
-              id="message"
-              name="message"
               rows="5"
+              name="message"
               value={formData.message}
               onChange={handleChange}
               required
-            ></textarea>
+            />
           </div>
+
           <PrimaryButton type="submit" disabled={isSubmitting}>
             {isSubmitting ? 'Sending...' : 'Send Enquiry'}
           </PrimaryButton>
+
           {submitMessage && (
-            <p className={`submit-message ${submitMessage.includes('Thank you') ? 'success' : 'error'}`}>
+            <p
+              className={`submit-message ${
+                submitMessage.includes('Thank you') ? 'success' : 'error'
+              }`}
+            >
               {submitMessage}
             </p>
           )}
         </form>
+          </div>
+                    <div className="split-right card-grid animate-stagger">
+
+            <div className="card glow-card">
+              <h3 className="card-title">Connect With Us</h3>
+              <p className="card-body">
+                Follow us for updates, insights, and announcements.
+              </p>
+
+              <div className="social-icons">
+                <a href="https://www.linkedin.com/company/tempesthub/" target="_blank" rel="noreferrer">in</a>
+                <a href="https://x.com/Tempest_hub" target="_blank" rel="noreferrer">x</a>
+                <a href="https://www.facebook.com/profile.php?id=61585734515727" target="_blank" rel="noreferrer">fb</a>
+                <a href="https://www.instagram.com/tempest.hub?igsh=MXd2dDI5ZDZhNDVlZw==" target="_blank" rel="noreferrer">ig</a>
+              </div>
+            </div>
+
+            <div className="card glow-card">
+              <h3 className="card-title">Email Us</h3>
+              <p className="card-body">
+                Reach out directly for partnerships, training, or project discussions.
+              </p>
+
+              <a href="mailto:tempesthub01@gmail.com" className="email-link">
+                tempesthub01@gmail.com
+              </a>
+            </div>
+
+          </div>
+        </div>
       </Section>
     </>
   );
