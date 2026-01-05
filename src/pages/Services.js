@@ -226,7 +226,7 @@ const Services = () => {
 
           <div className="card">
             <img
-              src="http://localhost:3002/images/bot8.jpeg"
+              src="/images/bot8.jpeg"
               alt="Custom RAG Models"
               className="card-image"
             />
@@ -242,7 +242,7 @@ const Services = () => {
 
           <div className="card">
             <img
-              src="http://localhost:3002/images/HighTech%2011.png"
+              src="/images/HighTech%2011.png"
               alt="AI-Powered Automation"
               className="card-image"
             />

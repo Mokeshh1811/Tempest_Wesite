@@ -134,7 +134,7 @@ const Navbar = () => {
                   to="/services/cloud"
                   onClick={() => setMobileOpen(false)}
                 >
-                  Cloud & Platform Engineering
+                  Web & Cloud Solutions
                 </NavLink>
 
                 <NavLink
