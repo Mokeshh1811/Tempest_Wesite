@@ -5,6 +5,12 @@ import PrimaryButton from '../components/PrimaryButton';
 import '../components/CardGrid.css';
 import '../components/Forms.css';
 import './PageTransition.css';
+import {
+  FaLinkedinIn,
+  FaXTwitter,
+  FaFacebookF,
+  FaInstagram
+} from 'react-icons/fa6';
 
 const Bootcamps = () => {
   const [visible, setVisible] = useState(false);
@@ -101,7 +107,7 @@ Experience Level: ${formData.experience}
             <span className="card-tag">Internship</span>
             <h3 className="card-title">Python Internship</h3>
             <p className="card-body">
-              Practical internship experience in Python programming, including data science, web development, and automation.
+              Practical internship experience in Python programming, including data science, Full Stack Development, and automation.
             </p>
             <Link to="/training/internships/python-internship" className="card-read-more" title="Read more">
               →
@@ -111,13 +117,13 @@ Experience Level: ${formData.experience}
           <div className="card">
             <img
               src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-              alt="Website Development Internship"
+              alt="Full Stack Development Internship"
               className="card-image"
             />
             <span className="card-tag">Internship</span>
-            <h3 className="card-title">Website Development Internship</h3>
+            <h3 className="card-title">Full Stack Development Internship</h3>
             <p className="card-body">
-              Internship program covering front-end and back-end web development technologies and best practices.
+              Internship program covering front-end and back-end Full Stack Development technologies and best practices.
             </p>
             <Link to="/training/internships/website-development-internship" className="card-read-more" title="Read more">
               →
@@ -155,6 +161,47 @@ Experience Level: ${formData.experience}
               →
             </Link>
           </div>
+          <div className="card">
+            <img
+              src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=2070&q=80"
+              alt="Quality Assurance Internship"
+              className="card-image"
+            />
+            <span className="card-tag">Internship</span>
+            <h3 className="card-title">Quality Assurance Internship</h3>
+            <p className="card-body">
+              Hands-on internship focused on software testing, manual & automation testing,
+              test case design, and real-world QA workflows.
+            </p>
+            <Link
+              to="/training/internships/quality-assurance-internship"
+              className="card-read-more"
+              title="Read more"
+            >
+              →
+            </Link>
+          </div>
+          <div className="card">
+            <img
+              src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=2070&q=80"
+              alt="Data Science Internship"
+              className="card-image"
+            />
+            <span className="card-tag">Internship</span>
+            <h3 className="card-title">Data Science Internship</h3>
+            <p className="card-body">
+              Internship covering Python, data analysis, machine learning fundamentals,
+              real datasets, and industry use cases.
+            </p>
+            <Link
+              to="/training/internships/data-science-internship"
+              className="card-read-more"
+              title="Read more"
+            >
+              →
+            </Link>
+          </div>
+
         </div>
       </Section>
 
@@ -210,10 +257,16 @@ Experience Level: ${formData.experience}
                   <option value="">Select</option>
                   <option value="SQL Internship">SQL Internship</option>
                   <option value="Python Internship">Python Internship</option>
-                  <option value="Website Development Internship">
-                    Website Development Internship
+                  <option value="Full Stack Development Internship">
+                    Full Stack Development Internship
                   </option>
                   <option value="UI & UX Internship">UI & UX Internship</option>
+                  <option value="Quality Assurance Internship">
+                    Quality Assurance Internship
+                  </option>
+                  <option value="Data Science Internship">
+                    Data Science Internship
+                  </option>
                   <option value="Graphic Design Internship">
                     Graphic Design Internship
                   </option>
@@ -240,11 +293,10 @@ Experience Level: ${formData.experience}
 
               {submitMessage && (
                 <p
-                  className={`submit-message ${
-                    submitMessage.includes('Thank')
-                      ? 'success'
-                      : 'error'
-                  }`}
+                  className={`submit-message ${submitMessage.includes('Thank')
+                    ? 'success'
+                    : 'error'
+                    }`}
                 >
                   {submitMessage}
                 </p>
@@ -261,10 +313,41 @@ Experience Level: ${formData.experience}
               </p>
 
               <div className="social-icons">
-                <a href="https://www.linkedin.com/company/tempesthub/" target="_blank" rel="noreferrer">in</a>
-                <a href="https://x.com/Tempest_hub" target="_blank" rel="noreferrer">x</a>
-                <a href="https://www.facebook.com/profile.php?id=61585734515727" target="_blank" rel="noreferrer">fb</a>
-                <a href="https://www.instagram.com/tempest.hub?igsh=MXd2dDI5ZDZhNDVlZw==" target="_blank" rel="noreferrer">ig</a>
+                <a
+                  href="https://www.linkedin.com/company/tempesthub/"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="LinkedIn"
+                >
+                  <FaLinkedinIn />
+                </a>
+
+                <a
+                  href="https://x.com/Tempest_hub"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="X (Twitter)"
+                >
+                  <FaXTwitter />
+                </a>
+
+                <a
+                  href="https://www.facebook.comD"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Facebook"
+                >
+                  <FaFacebookF />
+                </a>
+
+                <a
+                  href="https://www.instagram.com/tempest.hub?igsh=MXd2dDI5ZDZhNDVlZw=="
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Instagram"
+                >
+                  <FaInstagram />
+                </a>
               </div>
             </div>
 

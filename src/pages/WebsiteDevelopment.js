@@ -34,7 +34,7 @@ const WebsiteDevelopment = () => {
         },
         body: JSON.stringify({
           ...formData,
-          service: 'Website Development'
+          service: 'Full Stack Development'
         }),
       });
 
@@ -55,20 +55,20 @@ const WebsiteDevelopment = () => {
   return (
     <>
       <Section
-        eyebrow="Website Development"
+        eyebrow="Full Stack Development"
         title="Custom websites built for performance and user experience."
-        subtitle="End-to-end website development using modern technologies and best practices."
+        subtitle="End-to-end Full Stack Development using modern technologies and best practices."
       >
         <div className="service-content">
           <div className="service-overview">
-            <h3>Website Development Services</h3>
+            <h3>Full Stack Development Services</h3>
             <p>Create stunning, functional websites that drive results and provide exceptional user experiences.</p>
 
             <h4>Services Offered:</h4>
             <ul>
               <li>Custom website design and development</li>
               <li>Responsive web design for all devices</li>
-              <li>E-commerce website development</li>
+              <li>E-commerce Full Stack Development</li>
               <li>Content Management System (CMS) integration</li>
               <li>Website maintenance and support</li>
             </ul>

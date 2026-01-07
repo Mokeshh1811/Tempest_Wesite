@@ -34,7 +34,7 @@ const WebDevelopmentBootcamp = () => {
         },
         body: JSON.stringify({
           ...formData,
-          service: 'Web Development Bootcamp'
+          service: 'Full Stack Development Bootcamp'
         }),
       });
 
@@ -55,14 +55,14 @@ const WebDevelopmentBootcamp = () => {
   return (
     <>
       <Section
-        eyebrow="Web Development Bootcamp"
-        title="Full-stack web development training."
+        eyebrow="Full Stack Development Bootcamp"
+        title="Full-stack Full Stack Development training."
         subtitle="Learn modern web technologies including React, Node.js, and databases to build full-stack applications."
       >
         <div className="service-content">
           <div className="service-overview">
-            <h3>Comprehensive Web Development Training</h3>
-            <p>Master full-stack web development with modern technologies and industry best practices.</p>
+            <h3>Comprehensive Full Stack Development Training</h3>
+            <p>Master full-stack Full Stack Development with modern technologies and industry best practices.</p>
 
             <h4>Curriculum Overview:</h4>
             <ul>
@@ -88,7 +88,7 @@ const WebDevelopmentBootcamp = () => {
           <div className="service-image">
             <img
               src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-              alt="Web Development Bootcamp"
+              alt="Full Stack Development Bootcamp"
               className="service-hero-image"
             />
           </div>
@@ -97,7 +97,7 @@ const WebDevelopmentBootcamp = () => {
 
       <Section
         eyebrow="Application form"
-        title="Apply for Web Development Bootcamp."
+        title="Apply for Full Stack Development Bootcamp."
         subtitle="Fill in the details below to apply for upcoming bootcamp batches."
       >
         <form className="contact-form" onSubmit={handleSubmit}>

@@ -5,6 +5,12 @@ import PrimaryButton from '../components/PrimaryButton';
 import '../components/CardGrid.css';
 import '../components/Forms.css';
 import './PageTransition.css';
+import {
+  FaLinkedinIn,
+  FaXTwitter,
+  FaFacebookF,
+  FaInstagram
+} from 'react-icons/fa6';
 
 const FDPs = () => {
   const [visible, setVisible] = useState(false);
@@ -46,7 +52,7 @@ const FDPs = () => {
             <span className="card-tag">Internship</span>
             <h3 className="card-title">Python Internship</h3>
             <p className="card-body">
-              Practical internship experience in Python programming, including data science, web development, and automation.
+              Practical internship experience in Python programming, including data science, Full Stack Development, and automation.
             </p>
             <Link to="/training/internships/python-internship" className="card-read-more" title="Read more">
               →
@@ -56,13 +62,13 @@ const FDPs = () => {
           <div className="card">
             <img
               src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-              alt="Website Development Internship"
+              alt="Full Stack Development Internship"
               className="card-image"
             />
             <span className="card-tag">Internship</span>
-            <h3 className="card-title">Website Development Internship</h3>
+            <h3 className="card-title">Full Stack Development Internship</h3>
             <p className="card-body">
-              Internship program covering front-end and back-end web development technologies and best practices.
+              Internship program covering front-end and back-end Full Stack Development technologies and best practices.
             </p>
             <Link to="/training/internships/website-development-internship" className="card-read-more" title="Read more">
               →
@@ -139,7 +145,7 @@ const FDPs = () => {
               <option value="integration">Project Integration</option>
               <option value="sql-internship">SQL Internship</option>
               <option value="python-internship">Python Internship</option>
-              <option value="web-dev-internship">Website Development Internship</option>
+              <option value="web-dev-internship">Full Stack Development Internship</option>
               <option value="ui-ux-internship">UI & UX Internship</option>
               <option value="graphic-design-internship">Graphic Design Internship</option>
             </select>
@@ -152,13 +158,43 @@ const FDPs = () => {
               <p className="card-body">
                 Follow us for updates, insights, and announcements.
               </p>
+<div className="social-icons">
+  <a
+    href="https://www.linkedin.com/company/tempesthub/"
+    target="_blank"
+    rel="noreferrer"
+    aria-label="LinkedIn"
+  >
+    <FaLinkedinIn />
+  </a>
 
-              <div className="social-icons">
-                <a href="https://www.linkedin.com/company/tempesthub/" target="_blank" rel="noreferrer">in</a>
-                <a href="https://x.com/Tempest_hub" target="_blank" rel="noreferrer">x</a>
-                <a href="https://www.facebook.com/profile.php?id=61585734515727" target="_blank" rel="noreferrer">fb</a>
-                <a href="https://www.instagram.com/tempest.hub?igsh=MXd2dDI5ZDZhNDVlZw==" target="_blank" rel="noreferrer">ig</a>
-              </div>
+  <a
+    href="https://x.com/Tempest_hub"
+    target="_blank"
+    rel="noreferrer"
+    aria-label="X (Twitter)"
+  >
+    <FaXTwitter />
+  </a>
+
+  <a
+    href="https://www.facebook.comD"
+    target="_blank"
+    rel="noreferrer"
+    aria-label="Facebook"
+  >
+    <FaFacebookF />
+  </a>
+
+  <a
+    href="https://www.instagram.com/tempest.hub?igsh=MXd2dDI5ZDZhNDVlZw=="
+    target="_blank"
+    rel="noreferrer"
+    aria-label="Instagram"
+  >
+    <FaInstagram />
+  </a>
+</div>
             </div>
 
             <div className="card glow-card">

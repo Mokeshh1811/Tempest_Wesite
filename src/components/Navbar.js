@@ -44,9 +44,15 @@ const Navbar = () => {
       {/* NAVBAR */}
       <nav className="nav-header">
         <div className="nav-inner">
-          <div className="nav-brand">
-            <img src="/tempest-logo.png" alt="Tempest logo" className="nav-logo" />
-          </div>
+<div className="nav-brand">
+  <NavLink to="/">
+    <img
+      src="/tempest-logo.png"
+      alt="Tempest logo"
+      className="nav-logo"
+    />
+  </NavLink>
+</div>
 
           <div className="nav-center desktop-only">
             <span className="nav-eyebrow">MSME • AICTE Aligned</span>

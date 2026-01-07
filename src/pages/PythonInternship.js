@@ -3,6 +3,12 @@ import Section from '../components/Section';
 import PrimaryButton from '../components/PrimaryButton';
 import '../components/CardGrid.css';
 import '../components/Forms.css';
+import {
+  FaLinkedinIn,
+  FaXTwitter,
+  FaFacebookF,
+  FaInstagram
+} from 'react-icons/fa6';
 
 const PythonInternship = () => {
   const [formData, setFormData] = useState({
@@ -51,7 +57,7 @@ const PythonInternship = () => {
       <Section
         eyebrow="Python Internship"
         title="Practical Python programming and application development."
-        subtitle="Build expertise in Python through hands-on projects in data science, web development, and automation."
+        subtitle="Build expertise in Python through hands-on projects in data science, Full Stack Development, and automation."
       >
         <div className="service-layout">
 
@@ -63,7 +69,7 @@ const PythonInternship = () => {
 
             <p>
               Master Python programming with real-world applications across
-              data science, web development, and automation use cases.
+              data science, Full Stack Development, and automation use cases.
             </p>
 
             <div className="service-block">
@@ -72,7 +78,7 @@ const PythonInternship = () => {
                 <li>Python fundamentals and advanced concepts</li>
                 <li>Data structures and algorithms</li>
                 <li>Object-oriented programming</li>
-                <li>Web development with Django / Flask</li>
+                <li>Full Stack Development with Django / Flask</li>
                 <li>Data analysis using Pandas and NumPy</li>
               </ul>
             </div>
@@ -189,12 +195,43 @@ const PythonInternship = () => {
                 Follow us for updates, insights, and announcements.
               </p>
 
-              <div className="social-icons">
-                <a href="https://www.linkedin.com/company/tempesthub/" target="_blank" rel="noreferrer">in</a>
-                <a href="https://x.com/Tempest_hub" target="_blank" rel="noreferrer">x</a>
-                <a href="https://www.facebook.com/profile.php?id=61585734515727" target="_blank" rel="noreferrer">fb</a>
-                <a href="https://www.instagram.com/tempest.hub?igsh=MXd2dDI5ZDZhNDVlZw==" target="_blank" rel="noreferrer">ig</a>
-              </div>
+<div className="social-icons">
+  <a
+    href="https://www.linkedin.com/company/tempesthub/"
+    target="_blank"
+    rel="noreferrer"
+    aria-label="LinkedIn"
+  >
+    <FaLinkedinIn />
+  </a>
+
+  <a
+    href="https://x.com/Tempest_hub"
+    target="_blank"
+    rel="noreferrer"
+    aria-label="X (Twitter)"
+  >
+    <FaXTwitter />
+  </a>
+
+  <a
+    href="https://www.facebook.comD"
+    target="_blank"
+    rel="noreferrer"
+    aria-label="Facebook"
+  >
+    <FaFacebookF />
+  </a>
+
+  <a
+    href="https://www.instagram.com/tempest.hub?igsh=MXd2dDI5ZDZhNDVlZw=="
+    target="_blank"
+    rel="noreferrer"
+    aria-label="Instagram"
+  >
+    <FaInstagram />
+  </a>
+</div>
             </div>
 
             <div className="card glow-card">

@@ -10,7 +10,7 @@ import {
   FaInstagram
 } from 'react-icons/fa6';
 
-const GraphicDesignInternship = () => {
+const QualityAssuranceInternship = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -36,7 +36,7 @@ const GraphicDesignInternship = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...formData,
-          service: 'Graphic Design Internship'
+          service: 'Quality Assurance Internship'
         }),
       });
 
@@ -53,44 +53,41 @@ const GraphicDesignInternship = () => {
 
   return (
     <>
-      {/* ================= INTERNSHIP OVERVIEW ================= */}
       <Section
-        eyebrow="Graphic Design Internship"
-        title="Creative graphic design and visual communication skills."
-        subtitle="Develop branding, digital art, and marketing materials through hands-on design projects."
+        eyebrow="Quality Assurance Internship"
+        title="Software testing and quality assurance fundamentals."
+        subtitle="Learn how to ensure software reliability through structured testing and real-world QA workflows."
       >
         <div className="service-layout">
-
-          {/* LEFT CONTENT */}
           <div className="service-text">
             <h3 className="service-heading">
-              Internship Program: Graphic Design
+              Internship Program: Quality Assurance
             </h3>
 
             <p>
-              Hands-on training in visual communication, branding, and digital
-              design with real-world creative projects.
+              Gain hands-on experience in software testing, quality assurance
+              methodologies, and industry-standard QA processes.
             </p>
 
             <div className="service-block">
               <h4>Skills Covered</h4>
               <ul>
-                <li>Branding and logo design</li>
-                <li>Digital illustration and typography</li>
-                <li>Marketing and social media creatives</li>
-                <li>Print and digital media design</li>
-                <li>Color theory and layout composition</li>
+                <li>Manual testing fundamentals</li>
+                <li>Test case design & execution</li>
+                <li>Bug tracking & reporting</li>
+                <li>Functional & regression testing</li>
+                <li>Basic automation concepts</li>
               </ul>
             </div>
 
             <div className="service-block">
               <h4>Tools & Technologies</h4>
               <ul>
-                <li>Adobe Photoshop, Illustrator, InDesign</li>
-                <li>Figma and collaboration tools</li>
-                <li>Vector and raster graphics</li>
-                <li>Print production basics</li>
-                <li>Portfolio development</li>
+                <li>JIRA / Bugzilla</li>
+                <li>Selenium basics</li>
+                <li>Postman (API testing)</li>
+                <li>Test documentation tools</li>
+                <li>Agile & SDLC concepts</li>
               </ul>
             </div>
 
@@ -104,71 +101,42 @@ const GraphicDesignInternship = () => {
             </div>
           </div>
 
-          {/* RIGHT VISUAL */}
           <div className="service-visual">
             <img
-              src="https://images.unsplash.com/photo-1545235617-9465d2a55698?auto=format&fit=crop&w=2070&q=80"
-              alt="Graphic design internship"
+              src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=2070&q=80"
+              alt="Quality assurance internship"
               className="service-image"
             />
           </div>
-
         </div>
       </Section>
 
-      {/* ================= APPLICATION FORM ================= */}
       <Section
         eyebrow="Application form"
-        title="Apply for Tempest bootcamps."
-        subtitle="Fill in the details below to apply for upcoming bootcamp batches."
+        title="Apply for Tempest training."
+        subtitle="Fill in the details below to apply for upcoming internship batches."
       >
         <div className="split-section">
-
-          {/* LEFT FORM */}
           <div className="split-left slide-up">
             <form className="contact-form" onSubmit={handleSubmit}>
               <div className="form-group">
                 <label>Name *</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                />
+                <input type="text" name="name" value={formData.name} onChange={handleChange} required />
               </div>
 
               <div className="form-group">
                 <label>Email *</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                />
+                <input type="email" name="email" value={formData.email} onChange={handleChange} required />
               </div>
 
               <div className="form-group">
                 <label>Institution / College *</label>
-                <input
-                  type="text"
-                  name="organization"
-                  value={formData.organization}
-                  onChange={handleChange}
-                  required
-                />
+                <input type="text" name="organization" value={formData.organization} onChange={handleChange} required />
               </div>
 
               <div className="form-group">
                 <label>Why are you interested in this internship? *</label>
-                <textarea
-                  rows="4"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                />
+                <textarea rows="4" name="message" value={formData.message} onChange={handleChange} required />
               </div>
 
               <PrimaryButton type="submit" disabled={isSubmitting}>
@@ -176,80 +144,38 @@ const GraphicDesignInternship = () => {
               </PrimaryButton>
 
               {submitMessage && (
-                <p
-                  className={`submit-message ${
-                    submitMessage.includes('Thank') ? 'success' : 'error'
-                  }`}
-                >
+                <p className={`submit-message ${submitMessage.includes('Thank') ? 'success' : 'error'}`}>
                   {submitMessage}
                 </p>
               )}
             </form>
           </div>
 
-          {/* RIGHT INFO */}
+          {/* RIGHT INFO (UNCHANGED TEMPLATE) */}
           <div className="split-right card-grid animate-stagger">
             <div className="card glow-card">
               <h3 className="card-title">Connect With Us</h3>
-              <p className="card-body">
-                Follow us for updates, insights, and announcements.
-              </p>
-
-<div className="social-icons">
-  <a
-    href="https://www.linkedin.com/company/tempesthub/"
-    target="_blank"
-    rel="noreferrer"
-    aria-label="LinkedIn"
-  >
-    <FaLinkedinIn />
-  </a>
-
-  <a
-    href="https://x.com/Tempest_hub"
-    target="_blank"
-    rel="noreferrer"
-    aria-label="X (Twitter)"
-  >
-    <FaXTwitter />
-  </a>
-
-  <a
-    href="https://www.facebook.comD"
-    target="_blank"
-    rel="noreferrer"
-    aria-label="Facebook"
-  >
-    <FaFacebookF />
-  </a>
-
-  <a
-    href="https://www.instagram.com/tempest.hub?igsh=MXd2dDI5ZDZhNDVlZw=="
-    target="_blank"
-    rel="noreferrer"
-    aria-label="Instagram"
-  >
-    <FaInstagram />
-  </a>
-</div>
+              <p className="card-body">Follow us for updates, insights, and announcements.</p>
+              <div className="social-icons">
+                <a href="https://www.linkedin.com/company/tempesthub/" target="_blank" rel="noreferrer"><FaLinkedinIn /></a>
+                <a href="https://x.com/Tempest_hub" target="_blank" rel="noreferrer"><FaXTwitter /></a>
+                <a href="https://www.facebook.com" target="_blank" rel="noreferrer"><FaFacebookF /></a>
+                <a href="https://www.instagram.com/tempest.hub" target="_blank" rel="noreferrer"><FaInstagram /></a>
+              </div>
             </div>
 
             <div className="card glow-card">
               <h3 className="card-title">Email Us</h3>
-              <p className="card-body">
-                Reach out directly for partnerships, training, or project discussions.
-              </p>
-
+              <p className="card-body">Reach out directly for partnerships or training.</p>
               <a href="mailto:tempesthub01@gmail.com" className="email-link">
                 tempesthub01@gmail.com
               </a>
             </div>
           </div>
-
         </div>
       </Section>
     </>
   );
 };
 
-export default GraphicDesignInternship;
+export default QualityAssuranceInternship;

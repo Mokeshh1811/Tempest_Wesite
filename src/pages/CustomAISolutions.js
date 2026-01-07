@@ -4,6 +4,12 @@ import PrimaryButton from '../components/PrimaryButton';
 import '../components/CardGrid.css';
 import '../components/Forms.css';
 import './ServicePage.css';
+import {
+  FaLinkedinIn,
+  FaXTwitter,
+  FaFacebookF,
+  FaInstagram
+} from 'react-icons/fa6';
 
 const CustomAISolutions = () => {
   const [formData, setFormData] = useState({
@@ -185,12 +191,43 @@ const CustomAISolutions = () => {
                 Follow us for updates, insights, and announcements.
               </p>
 
-              <div className="social-icons">
-                <a href="https://www.linkedin.com/company/tempesthub/" target="_blank" rel="noreferrer">in</a>
-                <a href="https://x.com/Tempest_hub" target="_blank" rel="noreferrer">x</a>
-                <a href="https://www.facebook.com/profile.php?id=61585734515727" target="_blank" rel="noreferrer">fb</a>
-                <a href="https://www.instagram.com/tempest.hub?igsh=MXd2dDI5ZDZhNDVlZw==" target="_blank" rel="noreferrer">ig</a>
-              </div>
+<div className="social-icons">
+  <a
+    href="https://www.linkedin.com/company/tempesthub/"
+    target="_blank"
+    rel="noreferrer"
+    aria-label="LinkedIn"
+  >
+    <FaLinkedinIn />
+  </a>
+
+  <a
+    href="https://x.com/Tempest_hub"
+    target="_blank"
+    rel="noreferrer"
+    aria-label="X (Twitter)"
+  >
+    <FaXTwitter />
+  </a>
+
+  <a
+    href="https://www.facebook.comD"
+    target="_blank"
+    rel="noreferrer"
+    aria-label="Facebook"
+  >
+    <FaFacebookF />
+  </a>
+
+  <a
+    href="https://www.instagram.com/tempest.hub?igsh=MXd2dDI5ZDZhNDVlZw=="
+    target="_blank"
+    rel="noreferrer"
+    aria-label="Instagram"
+  >
+    <FaInstagram />
+  </a>
+</div>
             </div>
 
             <div className="card glow-card">

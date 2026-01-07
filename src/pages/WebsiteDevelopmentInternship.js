@@ -3,6 +3,12 @@ import Section from '../components/Section';
 import PrimaryButton from '../components/PrimaryButton';
 import '../components/CardGrid.css';
 import '../components/Forms.css';
+import {
+  FaLinkedinIn,
+  FaXTwitter,
+  FaFacebookF,
+  FaInstagram
+} from 'react-icons/fa6';
 
 const WebsiteDevelopmentInternship = () => {
   const [formData, setFormData] = useState({
@@ -30,7 +36,7 @@ const WebsiteDevelopmentInternship = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...formData,
-          service: 'Website Development Internship'
+          service: 'Full Stack Development Internship'
         }),
       });
 
@@ -49,8 +55,8 @@ const WebsiteDevelopmentInternship = () => {
     <>
       {/* ================= INTERNSHIP OVERVIEW ================= */}
       <Section
-        eyebrow="Website Development Internship"
-        title="Full-stack web development skills and modern technologies."
+        eyebrow="Full Stack Development Internship"
+        title="Full-stack Full Stack Development skills and modern technologies."
         subtitle="Learn front-end and back-end development through hands-on projects and industry best practices."
       >
         <div className="service-layout">
@@ -58,11 +64,11 @@ const WebsiteDevelopmentInternship = () => {
           {/* LEFT CONTENT */}
           <div className="service-text">
             <h3 className="service-heading">
-              Internship Program: Website Development
+              Internship Program: Full Stack Development
             </h3>
 
             <p>
-              Comprehensive training in modern web development technologies,
+              Comprehensive training in modern Full Stack Development technologies,
               frameworks, and real-world project workflows.
             </p>
 
@@ -102,7 +108,7 @@ const WebsiteDevelopmentInternship = () => {
           <div className="service-visual">
             <img
               src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=2070&q=80"
-              alt="Website development internship"
+              alt="Full Stack Development internship"
               className="service-image"
             />
           </div>
@@ -189,12 +195,43 @@ const WebsiteDevelopmentInternship = () => {
                 Follow us for updates, insights, and announcements.
               </p>
 
-              <div className="social-icons">
-                <a href="https://www.linkedin.com/company/tempesthub/" target="_blank" rel="noreferrer">in</a>
-                <a href="https://x.com/Tempest_hub" target="_blank" rel="noreferrer">x</a>
-                <a href="https://www.facebook.com/profile.php?id=61585734515727" target="_blank" rel="noreferrer">fb</a>
-                <a href="https://www.instagram.com/tempest.hub?igsh=MXd2dDI5ZDZhNDVlZw==" target="_blank" rel="noreferrer">ig</a>
-              </div>
+<div className="social-icons">
+  <a
+    href="https://www.linkedin.com/company/tempesthub/"
+    target="_blank"
+    rel="noreferrer"
+    aria-label="LinkedIn"
+  >
+    <FaLinkedinIn />
+  </a>
+
+  <a
+    href="https://x.com/Tempest_hub"
+    target="_blank"
+    rel="noreferrer"
+    aria-label="X (Twitter)"
+  >
+    <FaXTwitter />
+  </a>
+
+  <a
+    href="https://www.facebook.comD"
+    target="_blank"
+    rel="noreferrer"
+    aria-label="Facebook"
+  >
+    <FaFacebookF />
+  </a>
+
+  <a
+    href="https://www.instagram.com/tempest.hub?igsh=MXd2dDI5ZDZhNDVlZw=="
+    target="_blank"
+    rel="noreferrer"
+    aria-label="Instagram"
+  >
+    <FaInstagram />
+  </a>
+</div>
             </div>
 
             <div className="card glow-card">

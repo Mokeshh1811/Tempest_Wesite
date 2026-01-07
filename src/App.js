@@ -35,7 +35,8 @@ import UIUXInternship from './pages/UIUXInternship';
 import GraphicDesignInternship from './pages/GraphicDesignInternship';
 import Contact from './pages/Contact';
 import VideoEditingProduction from './pages/VideoEditingProduction';
-
+import DataScienceInternship from './pages/DataScienceInternship';
+import QualityAssuranceInternship from './pages/QualityAssuranceInternship';
 const App = () => {
   return (
     <Layout>
@@ -73,6 +74,8 @@ const App = () => {
   <Route path="/training/internships/ui-ux-internship" element={<UIUXInternship />} />
   <Route path="/training/internships/graphic-design-internship" element={<GraphicDesignInternship />} />
   <Route path="/services/video-editing-production" element={<VideoEditingProduction />} />
+  <Route path="/training/internships/data-science-internship" element={<DataScienceInternship />} />
+  <Route path="/training/internships/quality-assurance-internship" element={<QualityAssuranceInternship />} />
   <Route path="/contact" element={<Contact />} />
 </Routes>
 
