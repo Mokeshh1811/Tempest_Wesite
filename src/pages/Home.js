@@ -282,7 +282,7 @@ const HomeContactForm = () => {
     setSubmitMessage('');
 
     try {
-      const response = await fetch('http://localhost:3003/api/send-email', {
+      const response = await fetch('https://mokesh.pythonanywhere.com/api/send-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
