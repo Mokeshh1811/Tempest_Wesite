@@ -54,9 +54,7 @@ const Navbar = () => {
   </NavLink>
 </div>
 
-          <div className="nav-center desktop-only">
-            <span className="nav-eyebrow">MSME • AICTE Aligned</span>
-          </div>
+
 
           {/* DESKTOP NAV */}
           <div className="nav-links desktop-only">
