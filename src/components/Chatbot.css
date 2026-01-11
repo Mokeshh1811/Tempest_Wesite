@@ -233,16 +233,23 @@
   outline: none;
   transition: border-color 0.2s ease;
   background: #f9fafb;
+  color: #374151; /* Dark text color for visibility */
 }
 
 .input-container input:focus {
   border-color: var(--primary, #6366f1);
   background: white;
+  color: #374151; /* Ensure text remains dark when focused */
+}
+
+.input-container input::placeholder {
+  color: #9ca3af; /* Light gray placeholder text */
 }
 
 .input-container input:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+  color: #9ca3af; /* Lighter color for disabled state */
 }
 
 .send-btn {
