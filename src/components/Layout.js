@@ -17,16 +17,16 @@ const Layout = ({ children }) => {
         <div className="footer-inner footer-grid">
 
           {/* LEFT: BRAND / ABOUT */}
-          <div className="footer-brand-section">
-            <img
-              src="/tempest-logo.png"
-              alt="Tempest logo"
-              className="footer-logo-image"
-            />
-            <p className="footer-description">
-              Building real-world engineering, AI solutions, and industry-ready talent.
-            </p>
-          </div>
+<div className="footer-brand-section">
+  <img
+    src="/tempest-logo.png"
+    alt="Tempest logo"
+    className="footer-logo-image"
+  />
+  <p className="footer-description">
+    Building real-world engineering, AI solutions, and industry-ready talent.
+  </p>
+</div>
 
 
           {/* CENTER: CONTACT */}
@@ -79,7 +79,7 @@ const Layout = ({ children }) => {
         </div>
       </footer>
 
-      {/* <Chatbot /> */}
+      <Chatbot />
     </>
   );
 };
