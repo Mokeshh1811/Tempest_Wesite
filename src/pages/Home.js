@@ -247,7 +247,7 @@ const HeroSlideshow = () => {
 
       <div className="hero-content">
         <h1 className="hero-title">
-          Empowering <span className="highlight">{slide.highlight}</span>
+          Tempest Hub - Empowering <span className="highlight">{slide.highlight}</span>
         </h1>
 
         <p className="hero-subtitle">{slide.subtitle}</p>
