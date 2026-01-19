@@ -167,6 +167,24 @@ const Services = () => {
     →
   </Link> */}
 </div>
+<div className="card">
+  <img
+    src="https://images.unsplash.com/photo-1611505908502-5b67e53e3a76?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    alt="3D Printing & Rapid Prototyping"
+    className="card-image"
+  />
+  <span className="card-tag">3D Printing</span>
+  <h3 className="card-title">3D Printing & Rapid Prototyping</h3>
+  <p className="card-body">
+    On-demand additive manufacturing for rapid prototyping, functional parts and small-batch production, enabling faster design iteration and validation.
+  </p>
+  {/*
+  <Link to="/services/3d-printing" className="card-read-more" title="Read more">
+    →
+  </Link>
+  */}
+</div>
+
 
         </div>
         <div style={{ textAlign: 'center', marginTop: '2rem' }}>

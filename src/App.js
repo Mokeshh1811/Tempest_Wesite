@@ -37,6 +37,8 @@ import Contact from './pages/Contact';
 import VideoEditingProduction from './pages/VideoEditingProduction';
 import DataScienceInternship from './pages/DataScienceInternship';
 import QualityAssuranceInternship from './pages/QualityAssuranceInternship';
+import AIMLInternship from './pages/AIMLInternship';
+import ThreeDPrinting from './pages/ThreeDPrinting';
 const App = () => {
   return (
     <Layout>
@@ -76,6 +78,8 @@ const App = () => {
   <Route path="/services/video-editing-production" element={<VideoEditingProduction />} />
   <Route path="/training/internships/data-science-internship" element={<DataScienceInternship />} />
   <Route path="/training/internships/quality-assurance-internship" element={<QualityAssuranceInternship />} />
+  <Route path="/training/internships/ai-ml-internship" element={<AIMLInternship />} />
+  <Route path="/services/3d-printing" element={<ThreeDPrinting />} />
   <Route path="/contact" element={<Contact />} />
 </Routes>
 

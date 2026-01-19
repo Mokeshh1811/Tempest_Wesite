@@ -180,7 +180,30 @@ Experience Level: ${formData.experience}
             >
               →
             </Link>
+          
           </div>
+<div className="card">
+  <img
+    src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=2070&q=80"
+    alt="AI & Machine Learning Internship"
+    className="card-image"
+  />
+  <span className="card-tag">Internship</span>
+  <h3 className="card-title">AI & Machine Learning Internship</h3>
+  <p className="card-body">
+    Practical internship focused on artificial intelligence and machine learning,
+    including data preprocessing, model building, training, evaluation, and real-world
+    AI applications.
+  </p>
+  <Link
+    to="/training/internships/ai-ml-internship"
+    className="card-read-more"
+    title="Read more"
+  >
+    →
+  </Link>
+</div>
+
           <div className="card">
             <img
               src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=2070&q=80"
