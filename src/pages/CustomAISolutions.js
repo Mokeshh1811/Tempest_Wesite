@@ -211,7 +211,7 @@ const CustomAISolutions = () => {
   </a>
 
   <a
-    href="https://www.facebook.comD"
+    href="https://www.facebook.com/profile.php?id=61586259132683"
     target="_blank"
     rel="noreferrer"
     aria-label="Facebook"

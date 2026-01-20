@@ -66,8 +66,6 @@ const Layout = ({ children }) => {
             <div className="footer-link-list">
               <a href="/services/cloud">Web & Cloud Solutions</a>
               <a href="/services/ai">AI & Automation</a>
-              <a href="/services/content-writing">Content Writing</a>
-              <a href="/services/video-editing-production">Video Editing</a>
             </div>
           </div>
 
