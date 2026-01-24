@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './Chatbot.css';
+import { marked } from 'marked';
+
 
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -106,7 +108,13 @@ const Chatbot = () => {
                   className={`message ${message.sender === 'user' ? 'user-message' : 'bot-message'}`}
                 >
                   <div className="message-content">
-                    <p>{message.text}</p>
+                    <div
+  className="formatted-message"
+  dangerouslySetInnerHTML={{
+    __html: marked.parse(message.text)
+  }}
+/>
+
                     <span className="message-time">
                       {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                     </span>
